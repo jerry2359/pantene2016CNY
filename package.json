@@ -1,0 +1,14 @@
+{
+  "name": "pantene2016CNY",
+  "version": "1.0.0",
+  "description": "pantene2016CNY project",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jerry",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
+}

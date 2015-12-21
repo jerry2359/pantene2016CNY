@@ -1,0 +1,628 @@
+html,body { width:100%; height:100%; position: relative; overflow: hidden;}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,menu,nav,output,ruby,section,summary,time,mark,audio,video,p{margin:0;padding:0;border:0;vertical-align:baseline;}
+
+/* HTML5 display-role reset for older browsers */
+article,aside,details,figcaption,figure,footer,header,menu,nav,section{display:block;}
+body{line-height:1.2;font-size:26px;font-family:"微软雅黑","黑体",Verdana,Arial,Helvetica,sans-serif;margin:0 auto; color: #000; background-color: #fff;}
+ol,ul{list-style:none;}
+a, u{text-decoration:none;}
+a{color: #000;}
+a:hover{color: #000;}
+img{border:0px;vertical-align:middle;}
+em{ font-style: normal;}
+input,button,select,textarea{outline:none}
+
+/*取消点击高亮*/
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+/*修改input的placeholder颜色*/
+input::-webkit-input-placeholder { /* WebKit browsers */
+    color:#fef5a6;
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:#fef5a6;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:#fef5a6;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:#fef5a6;
+}
+
+/*css3动画定义*/
+.ts0_1 { -webkit-transition:0.1s all ease; -moz-transition:0.1s all ease; -ms-transition:0.1s all ease; -o-transition:0.1s all ease; transition:0.1s all ease; }
+.ts0_5{ -webkit-transition:0.5s all ease; -moz-transition:0.5s all ease; -ms-transition:0.5s all ease; -o-transition:0.5s all ease; transition:0.5s all ease; }
+.ts1 { -webkit-transition:1s all ease; -moz-transition:1s all ease; -ms-transition:1s all ease; -o-transition:1s all Linear; transition:1s all ease; }
+.ts2 { -webkit-transition:2s all ease; -moz-transition:2s all ease; -ms-transition:2s all ease; -o-transition:2s all Linear; transition:2s all ease; }
+.ts3 { -webkit-transition:3s all ease; -moz-transition:3s all ease; -ms-transition:3s all ease; -o-transition:3s all ease; transition:3s all ease; }
+.ts4 { -webkit-transition:4s all ease; -moz-transition:4s all ease; -ms-transition:4s all ease; -o-transition:4s all ease; transition:4s all ease; }
+.ts10 { -webkit-transition:10s all linear; -moz-transition:10s all linear; -ms-transition:10s all linear; -o-transition:10s all linear; transition:10s all linear; }
+
+
+/*共同部分*/
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*background: url("../img/common/page_bg.jpg") center no-repeat;
+    background-size: cover;*/
+    display: none;
+}
+.page.active {
+    display: block;
+}
+.page img {
+    position: absolute;
+}
+
+.loading {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 500;
+    color: #fff;
+    background: #000;
+    background-size: cover;
+    display: none;
+}
+.loading.active {
+    display: block;
+}
+.loading article {
+    width: 100%;
+    height: 70px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -100px;
+}
+.loading p {
+    display: block;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.loading span {
+    display: block;
+    width: 57.03%;
+    height: 8px;
+    position: absolute;
+    bottom: 0;
+    left: 21.87%;
+    border-bottom: #e7bf7e solid 2px;
+}
+.loading span em {
+    display: block;
+    width: 0;
+    height: 100%;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    background-color: #e7bf7e;
+}
+.logo {
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+/*首页*/
+#home img.flower {
+    top: 422px;
+    right: -22px;
+}
+#home img.beauty {
+    top: 90px;
+    left: 10px;
+}
+#home img.name {
+    top: 685px;
+    left: 600px;
+}
+#home img.tit {
+    top: 800px;
+    left: 4px;
+}
+#home a.start {
+    display: block;
+    width: 246px;
+    height: 68px;
+    position: absolute;
+    left: 250px;
+    bottom: 50px;
+    background: url("../img/common/icon/icon_01.png?__spriter") 0 0 no-repeat;
+}
+
+/*选择图片*/
+#select img.camera {
+    top: 308px;
+    left: 77px;
+}
+
+/*预览*/
+#preview .portraitbox {
+    background: url("../img/preview/pic_03.png") center no-repeat;
+}
+.portraitbox {
+    width: 683px;
+    height: 813px;
+    position: absolute;
+    top: 239px;
+    left: 42px;
+}
+.portraitbox img.face {
+    top: 43px;
+    left: 52px;
+}
+.portraitbox img.brows {
+    top: 248px;
+    left: 115px;
+}
+.portraitbox img.eyes {
+    top: 285px;
+    left: 73px;
+}
+.portraitbox img.nose {
+    top: 340px;
+    left: 300px;
+}
+.portraitbox img.mouth {
+    top: 590px;
+    left: 255px;
+}
+.portraitbox img.bang {
+    top: 15px;
+    left: 5px;
+}
+
+#preview a {
+    display: block;
+    position: absolute;
+}
+#preview a.dressup {
+    width: 114px;
+    height: 59px;
+    top: 685px;
+    left: 537px;
+    background: url("../img/preview/pic_02.png?__spriter") 0 0 no-repeat;
+}
+#preview a.turnhairstyle {
+    width: 318px;
+    height: 97px;
+    top: 1060px;
+    left: 220px;
+    background: url("../img/preview/pic_01.png?__spriter") 0 0 no-repeat;
+}
+
+/*编辑*/
+#edit .portraitbox {
+    top: -120px;
+}
+#edit .panel {
+    width: 100%;
+    height: 610px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+#edit .panel ol {
+    display: block;
+    height: 110px;
+    background: url("../img/edit/pic_02.png") center no-repeat;
+}
+#edit .panel ol.tab1 {
+    background-image: url("../img/edit/pic_02.png");
+}
+#edit .panel ol.tab2 {
+    background-image: url("../img/edit/pic_02_2.png");
+}
+#edit .panel ol.tab3 {
+    background-image: url("../img/edit/pic_02_3.png");
+}
+#edit .panel ol.tab4 {
+    background-image: url("../img/edit/pic_02_4.png");
+}
+#edit .panel ol li {
+    display: block;
+    width: 186px;
+    height: 100%;
+    float: left;
+    margin-right: 1px;
+}
+#edit .panel ol li:nth-last-of-type(1) {
+    margin-right: 0;
+}
+#edit .panel ul {
+    height: 430px;
+    background: url("../img/edit/pic_04.png") center no-repeat;
+    position: relative;
+    display: none;
+}
+#edit .panel ul.active {
+    display: block;
+}
+#edit .panel ul li {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+#edit .panel ul li.active {
+    display: block;
+    -webkit-animation: showLi 0.5s;
+    animation: showLi 0.5s;
+}
+@-webkit-keyframes showLi {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@-webkit-keyframes hideLi {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+#edit .panel ul li i {
+    display: block;
+    width: 225px;
+    height: 215px;
+    position: absolute;
+}
+#edit .panel ul li.active i.select {
+    background: url("../img/edit/pic_05.png") center no-repeat;
+}
+#edit .panel ul li i:nth-of-type(1), #edit .panel ul li i:nth-of-type(2), #edit .panel ul li i:nth-of-type(3) {
+    top: 5px;
+}
+#edit .panel ul li i:nth-of-type(4), #edit .panel ul li i:nth-of-type(5), #edit .panel ul li i:nth-of-type(6) {
+    top: 227px;
+}
+#edit .panel ul li i:nth-of-type(1), #edit .panel ul li i:nth-of-type(4) {
+    left: 43px;
+}
+#edit .panel ul li i:nth-of-type(2), #edit .panel ul li i:nth-of-type(5) {
+    left: 270px;
+}
+#edit .panel ul li i:nth-of-type(3), #edit .panel ul li i:nth-of-type(6) {
+    left: 498px;
+}
+#edit .panel ul.eyes li i img {
+    -webkit-transform: scale(0.4);
+    transform: scale(0.4);
+    top: 10px;
+    left: -155px;
+}
+#edit .panel ul.nose li i img {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    left: 70px;
+}
+#edit .panel ul.mouth li i img {
+    -webkit-transform: scale(0.6);
+    transform: scale(0.6);
+    top: 50px;
+    left: 25px;
+}
+#edit .panel ul.brows li i img {
+    -webkit-transform: scale(0.4);
+    transform: scale(0.4);
+    top: 50px;
+    left: -115px;
+}
+#edit .panel .prev, #edit .panel .next {
+    display: block;
+    width: 75px;
+    height: 125px;
+    position: absolute;
+    top: 160px;
+}
+#edit .panel .prev {
+    left: 0;
+}
+#edit .panel .next {
+    right: 0;
+}
+#edit .panel .prev i, #edit .panel .next i {
+    display: block;
+    width: 36px;
+    height: 65px;
+    position: absolute;
+    top: 30px;
+}
+#edit .panel .prev i {
+    left: 25px;
+    background: url("../img/common/icon/icon_02.png?__spriter") 0 0 no-repeat;
+}
+#edit .panel .next i {
+    right: 25px;
+    background: url("../img/common/icon/icon_03.png?__spriter") 0 0 no-repeat;
+}
+#edit .panel .complete {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: url("../img/edit/pic_01.png") center no-repeat;
+}
+
+
+/*选择发型*/
+#hairstyle .type {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#hairstyle .type img {
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+#hairstyle .type img.show {
+    opacity: 1;
+}
+
+#hairstyle .portraitbox.type1 {
+    -webkit-transform: scale(0.315);
+    transform: scale(0.315);
+    top: -100px;
+    left: 45px;
+}
+#hairstyle .portraitbox.type2 {
+    -webkit-transform: scale(0.3);
+    transform: scale(0.3);
+    top: -120px;
+    left: 42px;
+}
+#hairstyle .portraitbox.type3 {
+    -webkit-transform: scale(0.33);
+    transform: scale(0.33);
+    top: -110px;
+    left: 92px;
+}
+#hairstyle .portraitbox.type4 {
+    -webkit-transform: scale(0.3);
+    transform: scale(0.3);
+    top: -50px;
+    left: 37px;
+}
+#hairstyle .portraitbox.type5 {
+    -webkit-transform: scale(0.315);
+    transform: scale(0.315);
+    top: -125px;
+    left: 65px;
+}
+#hairstyle .portraitbox.type6 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    top: -157px;
+    left: 103px;
+}
+#hairstyle .portraitbox.type7 {
+    -webkit-transform: scale(0.315);
+    transform: scale(0.315);
+    top: -55px;
+    left: 138px;
+}
+#hairstyle .portraitbox.type8 {
+    -webkit-transform: scale(0.315);
+    transform: scale(0.315);
+    top: -86px;
+    left: 143px;
+}
+#hairstyle .portraitbox.type9 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    top: -105px;
+    left: 70px;
+}
+#hairstyle .portraitbox.type10 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    top: -63px;
+    left: 66px;
+}
+#hairstyle .portraitbox.type11 {
+    -webkit-transform: scale(0.3);
+    transform: scale(0.3);
+    top: -58px;
+    left: 62px;
+}
+#hairstyle .portraitbox.type12 {
+    -webkit-transform: scale(0.33);
+    transform: scale(0.33);
+    top: -145px;
+    left: 63px;
+}
+#hairstyle .portraitbox.type13 {
+    -webkit-transform: scale(0.315);
+    transform: scale(0.315);
+    top: -100px;
+    left: 47px;
+}
+#hairstyle .portraitbox.type14 {
+    -webkit-transform: scale(0.3);
+    transform: scale(0.3);
+    top: -129px;
+    left: 85px;
+}
+#hairstyle .portraitbox.type15 {
+    -webkit-transform: scale(0.3);
+    transform: scale(0.3);
+    top: -108px;
+    left: 42px;
+}
+#hairstyle .portraitbox.type16 {
+    -webkit-transform: scale(0.3);
+    transform: scale(0.3);
+    top: -65px;
+    left: 53px;
+}
+#hairstyle .portraitbox.type17 {
+    -webkit-transform: scale(0.33);
+    transform: scale(0.33);
+    top: -130px;
+    left: 37px;
+}
+#hairstyle .portraitbox.type18 {
+    -webkit-transform: scale(0.33);
+    transform: scale(0.33);
+    top: -100px;
+    left: 70px;
+}
+#hairstyle .portraitbox.type19 {
+    -webkit-transform: scale(0.3);
+    transform: scale(0.3);
+    top: -78px;
+    left: 75px;
+}
+#hairstyle .portraitbox.type20 {
+    -webkit-transform: scale(0.31);
+    transform: scale(0.31);
+    top: -156px;
+    left: 33px;
+}
+#hairstyle .portraitbox.type21 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    top: -140px;
+    left: 95px;
+}
+#hairstyle .portraitbox.type22 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    top: -152px;
+    left: 87px;
+}
+#hairstyle .portraitbox.type23 {
+    -webkit-transform: scale(0.36);
+    transform: scale(0.36);
+    top: -120px;
+    left: 51px;
+}
+#hairstyle .portraitbox.type24 {
+    -webkit-transform: scale(0.36);
+    transform: scale(0.36);
+    top: -96px;
+    left: 114px;
+}
+#hairstyle a {
+    position: absolute;
+    bottom: 35px;
+    z-index: 2;
+    display: none;
+}
+#hairstyle a.active {
+    display: block;
+}
+#hairstyle a.thistype {
+    width: 333px;
+    height: 90px;
+    left: 210px;
+    background: url("../img/hairstyle/pic_01.png?__spriter") 0 0 no-repeat;
+}
+#hairstyle a.again {
+    width: 208px;
+    height: 90px;
+    bottom: 295px;
+    right: 0;
+    background: url("../img/hairstyle/pic_02.png?__spriter") 0 0 no-repeat;
+}
+/*#hairstyle a.next {
+    width: 304px;
+    height: 90px;
+    right: 0;
+    background: url("../img/hairstyle/pic_03.png?__spriter") 0 0 no-repeat;
+}*/
+#hairstyle a.save {
+    width: 310px;
+    height: 90px;
+    left: 0;
+    background: url("../img/hairstyle/pic_04.png?__spriter") 0 0 no-repeat;
+}
+#hairstyle a.gift {
+    width: 304px;
+    height: 90px;
+    right: 0;
+    background: url("../img/hairstyle/pic_05.png?__spriter") 0 0 no-repeat;
+}
+#hairstyle .layer_share {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    background: rgba(0,0,0,0.8);
+    display: none;
+}
+#hairstyle .layer_share.active {
+    display: block;
+}
+#hairstyle .layer_share img {
+    top: 15px;
+    right: 40px;
+}
+
+
+/*分享成功落地页*/
+#sharecb {
+    background: url("../img/sharecb/bg.jpg") center no-repeat;
+    background-size: cover;
+}
+#sharecb .layer {
+    width: 587px;
+    height: 842px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    margin: -350px 0 0 -293px;
+    background: url("../img/sharecb/pic_02.jpg") center no-repeat;
+}
+#sharecb .layer a {
+    display: block;
+    width: 367px;
+    height: 59px;
+    position: absolute;
+    bottom: 25px;
+    left: 114px;
+    background: url("../img/sharecb/pic_01.png") center no-repeat;
+}
+
+
+/************************************************************************************
+smaller than 480 PHONE
+*************************************************************************************/
+@media screen and (max-width: 480px){
+
+    /*loading*/
+    .loading p {
+        font-size: 18px;
+    }
+    .loading article {
+        height: 50px;
+    }
+
+}
+
+
+
