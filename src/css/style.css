@@ -42,6 +42,13 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 
 
 /*共同部分*/
+#wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 .page {
     position: absolute;
     top: 0;
@@ -142,13 +149,25 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 
 /*选择图片*/
-#select img.camera {
+#select img.camera, #select .inp_fileToUpload, #select .weixinUpload {
     top: 308px;
     left: 77px;
+}
+#select .inp_fileToUpload, #select .weixinUpload {
+    width: 597px;
+    height: 617px;
+    position: absolute;
+    opacity: 0;
+    display: none;
+}
+#select .inp_fileToUpload.active, #select .weixinUpload.active {
+    display: block;
 }
 
 /*预览*/
 #preview .portraitbox {
+    top: auto;
+    bottom: 150px;
     background: url("../img/preview/pic_03.png") center no-repeat;
 }
 .portraitbox {
@@ -197,7 +216,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 #preview a.turnhairstyle {
     width: 318px;
     height: 97px;
-    top: 1060px;
+    bottom: 45px;
     left: 220px;
     background: url("../img/preview/pic_01.png?__spriter") 0 0 no-repeat;
 }
@@ -212,6 +231,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     position: absolute;
     bottom: 0;
     left: 0;
+    background: url("../img/edit/pic_06.png") center bottom no-repeat;
 }
 #edit .panel ol {
     display: block;
@@ -364,6 +384,14 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 
 
 /*选择发型*/
+#hairstyle .screenshot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
 #hairstyle .type {
     width: 100%;
     height: 100%;
@@ -380,190 +408,104 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     opacity: 1;
 }
 
-#hairstyle .portraitbox.type1 {
-    -webkit-transform: scale(0.315);
-    transform: scale(0.315);
-    top: -100px;
-    left: 45px;
-}
-#hairstyle .portraitbox.type2 {
-    -webkit-transform: scale(0.3);
-    transform: scale(0.3);
-    top: -120px;
-    left: 42px;
+#hairstyle .portraitbox {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+    top: -70px;
+    left: 22px;
 }
 #hairstyle .portraitbox.type3 {
-    -webkit-transform: scale(0.33);
-    transform: scale(0.33);
-    top: -110px;
-    left: 92px;
-}
-#hairstyle .portraitbox.type4 {
-    -webkit-transform: scale(0.3);
-    transform: scale(0.3);
-    top: -50px;
-    left: 37px;
-}
-#hairstyle .portraitbox.type5 {
-    -webkit-transform: scale(0.315);
-    transform: scale(0.315);
-    top: -125px;
-    left: 65px;
-}
-#hairstyle .portraitbox.type6 {
     -webkit-transform: scale(0.35);
     transform: scale(0.35);
-    top: -157px;
-    left: 103px;
+    left: 25px;
 }
 #hairstyle .portraitbox.type7 {
-    -webkit-transform: scale(0.315);
-    transform: scale(0.315);
-    top: -55px;
-    left: 138px;
-}
-#hairstyle .portraitbox.type8 {
-    -webkit-transform: scale(0.315);
-    transform: scale(0.315);
-    top: -86px;
-    left: 143px;
-}
-#hairstyle .portraitbox.type9 {
-    -webkit-transform: scale(0.35);
-    transform: scale(0.35);
-    top: -105px;
-    left: 70px;
-}
-#hairstyle .portraitbox.type10 {
-    -webkit-transform: scale(0.35);
-    transform: scale(0.35);
-    top: -63px;
-    left: 66px;
-}
-#hairstyle .portraitbox.type11 {
-    -webkit-transform: scale(0.3);
-    transform: scale(0.3);
-    top: -58px;
-    left: 62px;
+    left: 27px;
 }
 #hairstyle .portraitbox.type12 {
-    -webkit-transform: scale(0.33);
-    transform: scale(0.33);
-    top: -145px;
-    left: 63px;
-}
-#hairstyle .portraitbox.type13 {
-    -webkit-transform: scale(0.315);
-    transform: scale(0.315);
-    top: -100px;
-    left: 47px;
-}
-#hairstyle .portraitbox.type14 {
-    -webkit-transform: scale(0.3);
-    transform: scale(0.3);
-    top: -129px;
-    left: 85px;
-}
-#hairstyle .portraitbox.type15 {
-    -webkit-transform: scale(0.3);
-    transform: scale(0.3);
-    top: -108px;
-    left: 42px;
-}
-#hairstyle .portraitbox.type16 {
-    -webkit-transform: scale(0.3);
-    transform: scale(0.3);
-    top: -65px;
-    left: 53px;
+    left: 23px;
 }
 #hairstyle .portraitbox.type17 {
-    -webkit-transform: scale(0.33);
-    transform: scale(0.33);
-    top: -130px;
-    left: 37px;
-}
-#hairstyle .portraitbox.type18 {
-    -webkit-transform: scale(0.33);
-    transform: scale(0.33);
-    top: -100px;
-    left: 70px;
-}
-#hairstyle .portraitbox.type19 {
-    -webkit-transform: scale(0.3);
-    transform: scale(0.3);
-    top: -78px;
-    left: 75px;
+    left: 25px;
 }
 #hairstyle .portraitbox.type20 {
-    -webkit-transform: scale(0.31);
-    transform: scale(0.31);
-    top: -156px;
-    left: 33px;
-}
-#hairstyle .portraitbox.type21 {
-    -webkit-transform: scale(0.35);
-    transform: scale(0.35);
-    top: -140px;
-    left: 95px;
+    left: 25px;
 }
 #hairstyle .portraitbox.type22 {
     -webkit-transform: scale(0.35);
     transform: scale(0.35);
-    top: -152px;
-    left: 87px;
 }
 #hairstyle .portraitbox.type23 {
-    -webkit-transform: scale(0.36);
-    transform: scale(0.36);
-    top: -120px;
-    left: 51px;
+    left: 32px;
 }
 #hairstyle .portraitbox.type24 {
-    -webkit-transform: scale(0.36);
-    transform: scale(0.36);
-    top: -96px;
-    left: 114px;
+    left: 25px;
 }
-#hairstyle a {
+
+/*#hairstyle .text {
+    width: 100%;
+    height: 546px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}*/
+#hairstyle .text img {
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+}
+#hairstyle .text img.show {
+    opacity: 1;
+}
+#hairstyle .btn_wrap {
+    width: 100%;
+    height: 170px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+}
+#hairstyle .btn_wrap a {
     position: absolute;
     bottom: 35px;
     z-index: 2;
     display: none;
 }
-#hairstyle a.active {
+#hairstyle .btn_wrap a.active {
     display: block;
 }
-#hairstyle a.thistype {
+#hairstyle .btn_wrap a.thistype {
     width: 333px;
     height: 90px;
     left: 210px;
     background: url("../img/hairstyle/pic_01.png?__spriter") 0 0 no-repeat;
 }
-#hairstyle a.again {
-    width: 208px;
-    height: 90px;
-    bottom: 295px;
-    right: 0;
+#hairstyle .btn_wrap a.again {
+    width: 292px;
+    height: 82px;
+    bottom: 130px;
+    left: 0;
     background: url("../img/hairstyle/pic_02.png?__spriter") 0 0 no-repeat;
 }
-/*#hairstyle a.next {
+/*#hairstyle .btn_wrap a.next {
     width: 304px;
     height: 90px;
     right: 0;
     background: url("../img/hairstyle/pic_03.png?__spriter") 0 0 no-repeat;
 }*/
-#hairstyle a.save {
-    width: 310px;
-    height: 90px;
+#hairstyle .btn_wrap a.save {
+    width: 294px;
+    height: 82px;
     left: 0;
     background: url("../img/hairstyle/pic_04.png?__spriter") 0 0 no-repeat;
 }
-#hairstyle a.gift {
+#hairstyle .btn_wrap a.gift {
     width: 304px;
     height: 90px;
     right: 0;
     background: url("../img/hairstyle/pic_05.png?__spriter") 0 0 no-repeat;
 }
+
 #hairstyle .layer_share {
     width: 100%;
     height: 100%;
@@ -580,6 +522,29 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 #hairstyle .layer_share img {
     top: 15px;
     right: 40px;
+}
+#hairstyle .shareIcon {
+    width: 750px;
+    height: 750px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+#hairstyle .shareIcon.active {
+    display: block;
+}
+#hairstyle .canvasArea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+#hairstyle .canvasArea.active {
+    display: block;
 }
 
 
@@ -608,6 +573,27 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     background: url("../img/sharecb/pic_01.png") center no-repeat;
 }
 
+
+/*********高度<=1150的样式*************/
+/*首页*/
+#wrap.lt1150 #home img.flower {
+    top: 332px;
+}
+#wrap.lt1150 #home img.beauty {
+    top: 0;
+}
+#wrap.lt1150 #home img.name {
+    top: 595px;
+}
+#wrap.lt1150 #home img.tit {
+    top: 710px;
+}
+
+/*编辑*/
+#wrap.lt1150 #edit .portraitbox {
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+}
 
 /************************************************************************************
 smaller than 480 PHONE

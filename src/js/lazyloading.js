@@ -63,7 +63,7 @@
             if ( aLoadData[aLoadData.length-1] >= 100 ) {
                 //检测到缓存资源，正常延迟加载
                 clearInterval(loadListenTimer);
-                loadSpeed = 30;
+                loadSpeed = 5;
                 !isProgress && progressPercent();
             }
         }, 50);

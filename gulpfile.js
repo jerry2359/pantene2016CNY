@@ -98,7 +98,7 @@ gulp.task('concatCss', function() {
 //合并多个js并压缩成all.js文件
 gulp.task('concatJs', function() {
     return gulp.src([
-        'src/js/webscale.js', 'src/js/zepto.min.js', 'src/js/jerryAnimate.js', 'src/js/template.js', 'src/js/lazyloading.js',
+        'src/js/viewport.js', 'src/js/zepto.min.js', 'src/js/promise-0.1.1.min.js', 'src/js/html2canvas.js', 'src/js/jerryAnimate.js', 'src/js/template.js', 'src/js/lazyloading.js',
         'src/js/touch.js', 'src/js/fx.js', 'src/js/cssSprite.js', 'src/js/scrollbar.js', 'src/js/index.js'
     ])
             .pipe(plumber()) //plumber给pipe打补丁防止watch因报错而终止监听
