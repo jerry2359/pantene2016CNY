@@ -9,10 +9,19 @@
 </head>
 <body>
 <!--loading start-->
-<div class="loading active">
+<div class="loading">
     <article>
-        <p>新年焕发新的你…… <bdo>0%</bdo></p>
-        <span><em></em></span>
+        <div class="flowerArea active" style="top: 54px; left: 255px;">
+            <img src="../img/common/loading/pic_01.png" data-animate="{'animation':'rotate', 'details':{'infinite':true, 'function':'linear'}}">
+            <img src="../img/common/loading/pic_02.png" data-animate="{'animation':'rotate', 'details':{'targetAngle':'-360deg', 'infinite':true, 'function':'linear'}}">
+            <img src="../img/common/loading/pic_03.png" data-animate="{'animation':'rotate', 'details':{'infinite':true, 'function':'linear'}}">
+        </div>
+        <span>
+            <img class="barbg" src="../img/common/loading/pic_05.png">
+            <em><bdo></bdo></em>
+            <i></i>
+            <p>0%</p>
+        </span>
     </article>
 </div>
 <!--loading end-->
@@ -23,11 +32,9 @@
     <!--首页 start-->
     <div id="home" class="page">
         <img class="logo" src="../img/common/logo.png?rev=@@hash">
-        <img class="flower" src="../img/home/pic_02.png?rev=@@hash" data-animate="{'animation':'fadeIn', 'details':{'startX':'-30px', 'startY':'30px', 'delay':500, 'duration':2000}}">
-        <img class="beauty" src="../img/home/pic_01.png?rev=@@hash" data-animate="{'animation':'fadeIn', 'details':{'startX':'-30px', 'duration':2000}}">
-        <img class="name" src="../img/home/pic_03.png?rev=@@hash" data-animate="{'animation':'fadeIn', 'details':{'startY':'-30px', 'delay':2000}}">
-        <img class="tit" src="../img/home/pic_04.png?rev=@@hash" data-animate="{'animation':'fadeIn', 'details':{'startX':'-30px', 'startY':'-10px', 'delay':1000, 'duration':2000}}">
-        <a class="start" href="javascript:;" data-animate="{'animation':'zoomIn', 'details':{'startZoom':3, 'delay':2500, 'duration':500}}"></a>
+        <img class="flower" src="../img/home/pic_01.png">
+        <img class="tit" src="../img/home/pic_02.png">
+        <a class="start" href="javascript:;"></a>
     </div>
     <!--首页 end-->
 
@@ -38,6 +45,14 @@
         <img class="camera" src="../img/select/pic_01.png?rev=@@hash">
         <input type="file" name="fileToUpload" id="fileToUpload" class="inp_fileToUpload" multiple="multiple"/>
         <div class="weixinUpload"></div>
+
+        <div class="handleResult">
+            <img src="../img/select/pic_03.jpg">
+            <ol class="btns active">
+                <li></li><!--就这个-->
+                <li></li><!--换一张-->
+            </ol>
+        </div>
         <!--<input type="text" value="" id="urltest" style="position: absolute;top: 100px; left: 0; z-index: 5; width: 400px; height: 50px;">-->
     </div>
     <!--选择图片 end-->
@@ -46,29 +61,49 @@
     <div id="preview" class="page">
         <img class="logo" src="../img/common/logo.png?rev=@@hash">
         <img src="../img/preview/bg.jpg?rev=@@hash">
-        <div class="portraitbox">
-            <img class="face" src="../img/common/face/1.png">
-            <img class="brows" src="../img/common/brows/1.png">
-            <img class="eyes" src="../img/common/eyes/1.png">
-            <img class="nose" src="../img/common/nose/1.png">
-            <img class="mouth" src="../img/common/mouth/1.png">
-            <img class="bang" src="../img/preview/pic_04.png">
-            <a class="dressup" href="javascript:;"></a>
+
+        <div class="real">
+            <div class="picArea">
+                <img src="../img/select/pic_03.jpg" width="100%">
+            </div>
         </div>
-        <a class="turnhairstyle" href="javascript:;"></a>
+
+        <div class="cartoon">
+            <div class="load">
+                <div class="flowerArea" style="top: 120px; left: 255px;">
+                    <img src="../img/common/loading/pic_01.png" data-animate="{'animation':'rotate', 'details':{'infinite':true, 'function':'linear'}}">
+                    <img src="../img/common/loading/pic_02.png" data-animate="{'animation':'rotate', 'details':{'targetAngle':'-360deg', 'infinite':true, 'function':'linear'}}">
+                    <img src="../img/common/loading/pic_03.png" data-animate="{'animation':'rotate', 'details':{'infinite':true, 'function':'linear'}}">
+                </div>
+                <img class="loadingText" src="../img/preview/pic_02.png">
+            </div>
+
+            <div class="content active">
+                <div class="portraitbox">
+                    <img class="face" src="../img/common/face/1.png">
+                    <img class="brows" src="../img/common/brows/1.png">
+                    <img class="eyes" src="../img/common/eyes/1.png">
+                    <img class="nose" src="../img/common/nose/1.png">
+                    <img class="mouth" src="../img/common/mouth/1.png">
+                </div>
+            </div>
+        </div>
+
+        <ol class="btns active">
+            <li></li><!--调一下-->
+            <li></li><!--立刻换发型-->
+        </ol>
     </div>
     <!--预览 end-->
 
     <!--编辑 start-->
     <div id="edit" class="page">
-        <img class="bghair" src="../img/edit/pic_03.png?rev=@@hash">
         <div class="portraitbox">
             <img class="face" src="../img/common/face/1.png">
             <img class="brows" src="../img/common/brows/1.png">
             <img class="eyes" src="../img/common/eyes/1.png">
             <img class="nose" src="../img/common/nose/1.png">
             <img class="mouth" src="../img/common/mouth/1.png">
-            <img class="bang" src="../img/preview/pic_04.png">
         </div>
         <div class="panel">
             <ol class="tab1">
@@ -76,9 +111,24 @@
                 <li></li>
                 <li></li>
                 <li></li>
+                <li></li>
             </ol>
 
-            <ul class="eyes active">
+            <ul class="face active">
+                <li class="active">
+                    <i><img src="../img/common/face/1.png?rev=@@hash"></i>
+                    <i><img src="../img/common/face/2.png?rev=@@hash"></i>
+                    <i><img src="../img/common/face/3.png?rev=@@hash"></i>
+                    <i><img src="../img/common/face/4.png?rev=@@hash"></i>
+                    <i><img src="../img/common/face/5.png?rev=@@hash"></i>
+                    <i><img src="../img/common/face/6.png?rev=@@hash"></i>
+                </li>
+
+                <a class="prev"><i></i></a>
+                <a class="next"><i></i></a>
+            </ul>
+
+            <ul class="eyes">
                 <li class="active">
                     <i><img src="../img/common/eyes/1.png?rev=@@hash"></i><!--i select-->
                     <i><img src="../img/common/eyes/2.png?rev=@@hash"></i>
@@ -241,21 +291,39 @@
                 <img src="../img/hairstyle/text/23.png?rev=@@hash">
                 <img src="../img/hairstyle/text/24.png?rev=@@hash">
             </div>
+            <div class="sign_name">杀猪黒汉汉</div>
         </div>
 
-        <div class="btn_wrap">
-            <a class="thistype active" href="javascript:"></a><!--就这发型-->
-            <a class="again" href="javascript:"></a><!--再试一次-->
-            <!--<a class="next" href="javascript:"></a>&lt;!&ndash;下一步&ndash;&gt;-->
-            <a class="save" href="javascript:"></a><!--长按保存-->
-            <a class="gift" href="http://wqs.jd.com/event/brand/pantingyaoyiyao/index.shtml"></a><!--抢限量礼盒-->
+        <div class="thisTypeWrap active">
+            <a class="thistype" href="javascript:"></a><!--就这发型-->
         </div>
+
+        <ol class="btns">
+            <li></li><!--再试一次-->
+            <li></li><!--长按保存-->
+            <li></li><!--抢限量礼盒-->
+        </ol>
+
+        <!--<div class="btn_wrap">
+
+            <a class="again" href="javascript:"></a>&lt;!&ndash;再试一次&ndash;&gt;
+            &lt;!&ndash;<a class="next" href="javascript:"></a>&lt;!&ndash;下一步&ndash;&gt;&ndash;&gt;
+            <a class="save" href="javascript:"></a>&lt;!&ndash;长按保存&ndash;&gt;
+            <a class="gift" href="http://wqs.jd.com/event/brand/pantingyaoyiyao/index.shtml"></a>&lt;!&ndash;抢限量礼盒&ndash;&gt;
+        </div>-->
 
         <div class="layer_share">
             <img src="../img/hairstyle/pic_06.png?rev=@@hash">
         </div>
         <div class="shareIcon"></div><!--动态生成分享图标的容器-->
         <div class="canvasArea"></div>
+        <div class="layer_name">
+            <div class="form">
+                <i></i><!--关闭-->
+                <input type="text" value="" maxlength="5">
+                <span></span><!--完成-->
+            </div>
+        </div>
     </div>
     <!--选择发型 end-->
 
@@ -277,7 +345,23 @@
 <script src="http://pantenecny.agenda-bj.com.cn/share/js/my_lab.js"></script>
 <script src="../js/facepp-sdk.min.js"></script>
 <script src="../js/face.js"></script>
-<script src="../js/all-min.js?rev=@@hash" data-autoRender="true"></script>
+
+<!--<script src="../js/all-min.js?rev=@@hash" data-autoRender="true"></script>-->
+<link rel="stylesheet" type="text/css" href="../css/flower.css?rev=@@hash">
+<script src="../js/viewport.js"></script>
+<script src="../js/zepto.min.js"></script>
+<script src="../js/promise-0.1.1.min.js"></script>
+<script src="../js/html2canvas.js"></script>
+<script src="../js/jerryAnimate.js" data-autoRender="true"></script>
+<script src="../js/template.js"></script>
+<script src="../js/lazyloading.js"></script>
+<script src="../js/touch.js"></script>
+<script src="../js/fx.js"></script>
+<script src="../js/cssSprite.js"></script>
+<script src="../js/scrollbar.js"></script>
+<script src="../js/index.js"></script>
+
+
 <script src="http://pantenecny.agenda-bj.com.cn/share/js/jweixin-1.0.0.js"></script>
 <script src="http://pantenecny.agenda-bj.com.cn/share/js/weixin.js"></script>
 </body>

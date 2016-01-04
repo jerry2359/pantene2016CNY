@@ -4766,8 +4766,11 @@ CssSprite.prototype.stop = function() {
     (function() {
 
         var oBox = $('.loading'),
-            oBdo = oBox.find('bdo'),
-            oEm = oBox.find('em');
+            oEm = oBox.find('em'),
+            oBdo = oEm.find('bdo'),
+            oP = oBox.find('p'),
+            oI = oBox.find('i'),
+            oFlowerArea = oBox.find('.flowerArea');
 
         //选取body 延迟加载
         $('body').lazyLoading()
@@ -4776,13 +4779,14 @@ CssSprite.prototype.stop = function() {
                 '../img/common/face/4.png', '../img/common/face/5.png', '../img/common/face/6.png'
             ])
             .progress(function(percent) {
-                oBdo.text(percent+'%');
-                oEm.css('width', percent+'%');
+                oI.addClass('active');
+                oP.text(percent+'%');
+                oBdo.css('width', percent+'%');
             })
             .callBack(function() {
-                oBox.fadeOut({'removeClass':'active'});
-                homeModule.show();
-                //hashModule.init();
+                //oBox.fadeOut({'removeClass':'active'});
+                //homeModule.show();
+                //oFlowerArea.removeClass('active');
             });
 
     })();
@@ -4823,6 +4827,7 @@ CssSprite.prototype.stop = function() {
         }
 
     })();
+    homeModule.show();
 
 
     //选择图片

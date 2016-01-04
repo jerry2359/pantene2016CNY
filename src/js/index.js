@@ -32,8 +32,11 @@
     (function() {
 
         var oBox = $('.loading'),
-            oBdo = oBox.find('bdo'),
-            oEm = oBox.find('em');
+            oEm = oBox.find('em'),
+            oBdo = oEm.find('bdo'),
+            oP = oBox.find('p'),
+            oI = oBox.find('i'),
+            oFlowerArea = oBox.find('.flowerArea');
 
         //选取body 延迟加载
         $('body').lazyLoading()
@@ -42,13 +45,14 @@
                 '../img/common/face/4.png', '../img/common/face/5.png', '../img/common/face/6.png'
             ])
             .progress(function(percent) {
-                oBdo.text(percent+'%');
-                oEm.css('width', percent+'%');
+                oI.addClass('active');
+                oP.text(percent+'%');
+                oBdo.css('width', percent+'%');
             })
             .callBack(function() {
-                oBox.fadeOut({'removeClass':'active'});
-                homeModule.show();
-                //hashModule.init();
+                //oBox.fadeOut({'removeClass':'active'});
+                //homeModule.show();
+                //oFlowerArea.removeClass('active');
             });
 
     })();
@@ -217,8 +221,9 @@
     var previewModule = (function() {
 
         var oBox = $('#preview'),
-            oDressup = oBox.find('.dressup'),
-            oTurnhairstyle = oBox.find('.turnhairstyle');
+            aBtn = oBox.find('ol.btns li'),
+            oDressup = aBtn.eq(0),
+            oTurnhairstyle = aBtn.eq(1);
 
         //不够美，调一下
         oDressup.on('click', function() {
@@ -391,16 +396,19 @@
             oTextImg = oBox.find('.text img'),
             typeLen = aTypeImg.length,
             oThisType = oBox.find('.thistype'),
-            oAgain = oBox.find('.again'),
-            oSave = oBox.find('.save'),
-            oGift = oBox.find('.gift'),
+            aBtnThree = oBox.find('ol.btns'),
+            oAgain = aBtnThree.find('li').eq(0),
+            oSave = aBtnThree.find('li').eq(1),
+            oGift = aBtnThree.find('li').eq(2),
             oLayerShare = oBox.find('.layer_share'),
             oCanvasArea = oBox.find('.canvasArea'),
             oScreenshot = oBox.find('.screenshot'),
+            oLayerName = oBox.find('.layer_name'),
             allowSelect = true,
             typeIndex = -1,
             typeTimer = null,
-            shareTimer = null;
+            shareTimer = null,
+            nameTimer = null;
 
         function playType() {
             clearInterval(typeTimer);
@@ -415,6 +423,13 @@
             clearTimeout(shareTimer);
             shareTimer = setTimeout(function() {
                 oLayerShare.fadeIn({'addClass':'active'});
+            }, time);
+        }
+
+        function showLayerName(time) {
+            clearTimeout(nameTimer);
+            nameTimer = setTimeout(function() {
+                oLayerName.fadeIn({'addClass':'active'});
             }, time);
         }
 
@@ -557,13 +572,12 @@
 
             allowSelect = false;
             clearInterval(typeTimer);
+            oThisType.parent().removeClass('active');
             html2CanvasAPI(function() {
                 oFlower.addClass('active'); //播放花瓣掉落场景
-                oThisType.removeClass('active');
-                oAgain.addClass('active');
-                oSave.addClass('active');
-                oGift.addClass('active');
-                showShare(8000);
+                aBtnThree.addClass('active');
+                showLayerName(2000);
+                showShare(15000);
                 /*oBox.one('touchstart', function() {
                     //clearTimeout(shareTimer);
                     showShare(20000);
@@ -577,11 +591,10 @@
 
         //点击再试一次
         oAgain.on('click', function() {
+            clearTimeout(nameTimer);
             clearTimeout(shareTimer);
-            $(this).removeClass('active');
-            oSave.removeClass('active');
-            oGift.removeClass('active');
-            oThisType.addClass('active');
+            aBtnThree.removeClass('active');
+            oThisType.parent().addClass('active');
             oCanvasArea.removeClass('active').html('');
             oTextImg.removeClass();
             playType();
@@ -589,8 +602,23 @@
             //wxConfig && wxConfig({'wx_imgUrl':'http://pantenecny.agenda-bj.com.cn/share/img/share.png', 'reurl':''});
         });
 
+        //点击抢限量礼盒
+        oGift.on('click', function() {
+            location.href = 'http://wqs.jd.com/event/brand/pantingyaoyiyao/index.shtml';
+        });
+
         oSave.on('touchstart', function() {
             return false;
+        });
+
+        //输入昵称 关闭按钮
+        oLayerName.find('i').on('click', function() {
+            oLayerName.fadeOut({'removeClass':'active'});
+        });
+
+        //输入昵称 完成
+        oLayerName.find('span').on('click', function() {
+            oLayerName.fadeOut({'removeClass':'active'});
         });
 
         return {
@@ -606,7 +634,7 @@
 
     //test
     //$('#hairstyle').fadeIn({'addClass':'active'});
-    //hairstyleModule.show();
+    hairstyleModule.show();
 
 
     //location.hash设置、只兼容微信的后退后能
