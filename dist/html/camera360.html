@@ -277,7 +277,87 @@
 <script src="http://pantenecny.agenda-bj.com.cn/share/js/my_lab.js"></script>
 <script src="../js/facepp-sdk.min.js"></script>
 <script src="../js/face.js"></script>
-<script src="../js/all-min.js?rev=afcbfd09fd3905d7d45fa9061ee4ab28" data-autoRender="true"></script>
+<script src="../js/PGBridge.min.js"></script>
+<script src="../js/all-min.js?rev=76c31b42e1656b0105182cbf8a66d377" data-autoRender="true"></script>
 <script src="http://pantenecny.agenda-bj.com.cn/share/js/jweixin-1.0.0.js"></script>
 <script src="http://pantenecny.agenda-bj.com.cn/share/js/weixin.js"></script>
+<script>
+    ;(function() {
+
+        //camera360分享配置
+        //设置默认分享信息
+        var pgShareDefs = {
+            'title': '已经有10万人与潘婷共同预见自己2016年女神新发型',
+            'desc': '',
+            'link': 'http://pantenecny.agenda-bj.com.cn/html/',
+            'imgUrl': 'http://pantenecny.agenda-bj.com.cn/share/img/share.png',
+            'reurl': ''
+        };
+        window.pgResetShare = null;
+
+        window.PG.setConfig({
+            mode: 'dev',
+            channel: 'native',
+            appName: 'demo',
+            debug: false
+        });
+        window.PG.ready().then(function (interfaces) {
+            //显示右上角分享
+            interfaces.showMenuItems({
+                list: [{
+                    name: 'share',
+                    list: [
+                        {name: 'wechat'},
+                        {name: 'wechatMoments'}
+                    ]
+                }
+                ]
+            }).then(function (res) {
+                //alert("配置成功");
+            });
+
+            var addShareEvent = function() {
+                //分享给朋友
+                interfaces.onWebShareDefault({
+                    title: pgShareDefs.title,
+                    desc: pgShareDefs.desc,
+                    link: pgShareDefs.link,
+                    imgUrl: pgShareDefs.imgUrl,
+                    success: function (res) {
+                        //alert("分享朋友成功");
+                        if ( pgShareDefs.reurl ) location.href = pgShareDefs.reurl;
+                    }
+                });
+                //分享到朋友圈
+                interfaces.onWebShareTimeline({
+                    title: pgShareDefs.title,
+                    desc: pgShareDefs.desc,
+                    link: pgShareDefs.link,
+                    imgUrl: pgShareDefs.imgUrl,
+                    success: function (res) {
+                        //alert("分享朋友圈成功");
+                        if ( pgShareDefs.reurl ) location.href = pgShareDefs.reurl;
+                    }
+                });
+            };
+            addShareEvent();
+
+            //重新设置分享信息
+            window.pgResetShare = function( settings ) {
+                Zepto.extend(pgShareDefs, settings);
+                addShareEvent();
+            };
+
+            /*document.querySelector('#a').addEventListener('touchstart', function () {
+             interfaces.downloadImage({url:"https://s3.cn-north-1.amazonaws.com.cn/pg-fe/camera360.png"}).then(function(resp){
+             interfaces.shareImage({localId: resp.localId, desc: '最流行的娱乐大片一键制作'}).then(function () {
+
+             });
+             });
+             });*/
+
+        });
+
+    })();
+</script>
 </body>

@@ -5234,8 +5234,14 @@ CssSprite.prototype.stop = function() {
                                 imageurl: imgUrl,
                                 link: encodeURIComponent('http://pantenecny.agenda-bj.com.cn/html/')
                             }));
-                            alert($('#shareWeixin').attr('href'));
-                            alert($('#shareWeixinCircle').attr('href'));
+                            //alert($('#shareWeixin').attr('href'));
+                            //alert($('#shareWeixinCircle').attr('href'));
+                        } else if ( sUrl.indexOf('camera360.html') != -1 ) {
+
+                            //camera360分享配置
+                            //初始化分享图文及link
+                            window.pgResetShare && window.pgResetShare({'imgUrl':imgUrl, 'reurl':'http://wqs.jd.com/event/brand/pantingyaoyiyao/index.shtml'});
+
                         } else {
                             //微信客户端设置分享图文
                             isWeixin && wxConfig && wxConfig({'wx_imgUrl':imgUrl, 'reurl':'http://wqs.jd.com/event/brand/pantingyaoyiyao/index.shtml'});
