@@ -67,28 +67,30 @@
                 'startZ': 0,
                 'targetX': 0,
                 'targetY': 0,
-                'targetZ': 0
+                'targetZ': 0,
+                'startOpacity': 0,
+                'targetOpacity': 1
             },
             'style': '@-webkit-keyframes #animationClass# {\n\
                             0% {\n\
-                                opacity: 0;\n\
+                                opacity: #startOpacity#;\n\
                                 -webkit-transform: translate3d(#startX#, #startY#, #startZ#);\n\
                                 transform: translate3d(#startX#, #startY#, #startZ#);\n\
                             }\n\
                             100% {\n\
-                                opacity: 1;\n\
+                                opacity: #targetOpacity#;\n\
                                 -webkit-transform: translate3d(#targetX#, #targetY#, #targetZ#);\n\
                                 transform: translate3d(#targetX#, #targetY#, #targetZ#);\n\
                             }\n\
                         }\n\
                         @keyframes #animationClass# {\n\
                             0% {\n\
-                                opacity: 0;\n\
+                                opacity: #startOpacity#;\n\
                                 -webkit-transform: translate3d(#startX#, #startY#, #startZ#);\n\
                                 transform: translate3d(#startX#, #startY#, #startZ#);\n\
                             }\n\
                             100% {\n\
-                                opacity: 1;\n\
+                                opacity: #targetOpacity#;\n\
                                 -webkit-transform: translate3d(#targetX#, #targetY#, #targetZ#);\n\
                                 transform: translate3d(#targetX#, #targetY#, #targetZ#);\n\
                             }\n\

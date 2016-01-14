@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="format-detection" content="telephone=no,email=no,address=no">
+    <script src="../js/viewport.js?rev=@@hash"></script>
     <title>新年焕好运</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css?rev=@@hash">
 </head>
 <body>
 <!--loading start-->
-<div class="loading">
+<div class="loading active">
     <article>
         <div class="flowerArea active" style="top: 54px; left: 255px;">
             <img src="../img/common/loading/pic_01.png" data-animate="{'animation':'rotate', 'details':{'infinite':true, 'function':'linear'}}">
@@ -32,25 +33,30 @@
     <!--首页 start-->
     <div id="home" class="page">
         <img class="logo" src="../img/common/logo.png?rev=@@hash">
-        <img class="flower" src="../img/home/pic_01.png">
-        <img class="tit" src="../img/home/pic_02.png">
-        <a class="start" href="javascript:;"></a>
+        <img class="flower" src="../img/home/pic_01.png" data-animate="{'animation':'fadeIn', 'details':{'duration':800, 'startOpacity':0.3, 'infinite':true, 'alternate':true}}">
+        <img class="tit1" src="../img/home/pic_02.png" data-animate="{'animation':'fadeIn', 'details':{'duration':2000, 'startX':'100%'}}">
+        <img class="tit2" src="../img/home/pic_02_2.png" data-animate="{'animation':'fadeIn', 'details':{'duration':2000, 'startX':'-100%'}}">
+        <a class="start" href="javascript:;" data-animate="{'animation':'bounceIn', 'details':{'delay':1500, 'duration':1000}}"></a>
     </div>
     <!--首页 end-->
 
     <!--选择图片 start-->
     <div id="select" class="page">
+        <div class="fileReaderArea">
+            <div class="fileshot"></div>
+        </div>
         <img class="logo" src="../img/common/logo.png?rev=@@hash">
         <img src="../img/select/bg.jpg?rev=@@hash">
-        <img class="camera" src="../img/select/pic_01.png?rev=@@hash">
-        <input type="file" name="fileToUpload" id="fileToUpload" class="inp_fileToUpload" multiple="multiple"/>
-        <div class="weixinUpload"></div>
-
+        <div class="camera">
+            <img class="camerabg" src="../img/select/pic_01.png?rev=@@hash" width="100%">
+            <input type="file" name="fileToUpload" id="fileToUpload" class="inp_fileToUpload" multiple="multiple"/>
+            <div class="weixinUpload"></div>
+        </div>
         <div class="handleResult">
-            <img src="../img/select/pic_03.jpg">
             <ol class="btns active">
                 <li></li><!--就这个-->
-                <li></li><!--换一张-->
+                <li></li><!--微信：换一张-->
+                <li><input type="file" name="fileToUpload" id="fileToUpload2" class="inp_fileToUpload" multiple="multiple"/></li><!--非微信：换一张-->
             </ol>
         </div>
         <!--<input type="text" value="" id="urltest" style="position: absolute;top: 100px; left: 0; z-index: 5; width: 400px; height: 50px;">-->
@@ -63,13 +69,11 @@
         <img src="../img/preview/bg.jpg?rev=@@hash">
 
         <div class="real">
-            <div class="picArea">
-                <img src="../img/select/pic_03.jpg" width="100%">
-            </div>
+            <div class="picArea"></div>
         </div>
 
         <div class="cartoon">
-            <div class="load">
+            <div class="load active">
                 <div class="flowerArea" style="top: 120px; left: 255px;">
                     <img src="../img/common/loading/pic_01.png" data-animate="{'animation':'rotate', 'details':{'infinite':true, 'function':'linear'}}">
                     <img src="../img/common/loading/pic_02.png" data-animate="{'animation':'rotate', 'details':{'targetAngle':'-360deg', 'infinite':true, 'function':'linear'}}">
@@ -78,7 +82,7 @@
                 <img class="loadingText" src="../img/preview/pic_02.png">
             </div>
 
-            <div class="content active">
+            <div class="content">
                 <div class="portraitbox">
                     <img class="face" src="../img/common/face/1.png">
                     <img class="brows" src="../img/common/brows/1.png">
@@ -123,6 +127,20 @@
                     <i><img src="../img/common/face/5.png?rev=@@hash"></i>
                     <i><img src="../img/common/face/6.png?rev=@@hash"></i>
                 </li>
+                <li>
+                    <i><img src="../img/common/face/7.png?rev=@@hash"></i>
+                    <i><img src="../img/common/face/8.png?rev=@@hash"></i>
+                    <i><img src="../img/common/face/9.png?rev=@@hash"></i>
+                    <i><img src="../img/common/face/10.png?rev=@@hash"></i>
+                    <i><img src="../img/common/face/11.png?rev=@@hash"></i>
+                    <i><img src="../img/common/face/12.png?rev=@@hash"></i>
+                </li>
+                <li>
+                    <i><img src="../img/common/face/13.png?rev=@@hash"></i>
+                    <i><img src="../img/common/face/14.png?rev=@@hash"></i>
+                    <i><img src="../img/common/face/15.png?rev=@@hash"></i>
+                    <i><img src="../img/common/face/16.png?rev=@@hash"></i>
+                </li>
 
                 <a class="prev"><i></i></a>
                 <a class="next"><i></i></a>
@@ -134,11 +152,11 @@
                     <i><img src="../img/common/eyes/2.png?rev=@@hash"></i>
                     <i><img src="../img/common/eyes/3.png?rev=@@hash"></i>
                     <i><img src="../img/common/eyes/4.png?rev=@@hash"></i>
-                    <i><img src="../img/common/eyes/5.png?rev=@@hash"></i>
                     <i><img src="../img/common/eyes/6.png?rev=@@hash"></i>
+                    <i><img src="../img/common/eyes/7.png?rev=@@hash"></i>
                 </li>
                 <li>
-                    <i><img src="../img/common/eyes/7.png?rev=@@hash"></i>
+                    <i><img src="../img/common/eyes/5.png?rev=@@hash"></i>
                     <i><img src="../img/common/eyes/8.png?rev=@@hash"></i>
                     <i><img src="../img/common/eyes/9.png?rev=@@hash"></i>
                     <i><img src="../img/common/eyes/10.png?rev=@@hash"></i>
@@ -161,6 +179,35 @@
                     <i><img src="../img/common/eyes/23.png?rev=@@hash"></i>
                     <i><img src="../img/common/eyes/24.png?rev=@@hash"></i>
                 </li>
+                <li>
+                    <i><img src="../img/common/eyes/25.png?rev=@@hash"></i>
+                    <i><img src="../img/common/eyes/26.png?rev=@@hash"></i>
+                    <i><img src="../img/common/eyes/27.png?rev=@@hash"></i>
+                    <i><img src="../img/common/eyes/28.png?rev=@@hash"></i>
+                    <i><img src="../img/common/eyes/29.png?rev=@@hash"></i>
+                    <i><img src="../img/common/eyes/30.png?rev=@@hash"></i>
+                </li>
+                <li>
+                    <i><img src="../img/common/eyes/31.png?rev=@@hash"></i>
+                    <i><img src="../img/common/eyes/32.png?rev=@@hash"></i>
+                    <i><img src="../img/common/eyes/33.png?rev=@@hash"></i>
+                    <i><img src="../img/common/eyes/34.png?rev=@@hash"></i>
+                    <i><img src="../img/common/eyes/35.png?rev=@@hash"></i>
+                    <i><img src="../img/common/eyes/36.png?rev=@@hash"></i>
+                </li>
+                <li>
+                    <i><img src="../img/common/eyes/37.png?rev=@@hash"></i>
+                    <i><img src="../img/common/eyes/38.png?rev=@@hash"></i>
+                    <i><img src="../img/common/eyes/39.png?rev=@@hash"></i>
+                    <i><img src="../img/common/eyes/40.png?rev=@@hash"></i>
+                    <i><img src="../img/common/eyes/41.png?rev=@@hash"></i>
+                    <i><img src="../img/common/eyes/42.png?rev=@@hash"></i>
+                </li>
+                <li>
+                    <i><img src="../img/common/eyes/43.png?rev=@@hash"></i>
+                    <i><img src="../img/common/eyes/44.png?rev=@@hash"></i>
+                    <i><img src="../img/common/eyes/45.png?rev=@@hash"></i>
+                </li>
 
                 <a class="prev"><i></i></a>
                 <a class="next"><i></i></a>
@@ -174,6 +221,27 @@
                     <i><img src="../img/common/nose/4.png?rev=@@hash"></i>
                     <i><img src="../img/common/nose/5.png?rev=@@hash"></i>
                     <i><img src="../img/common/nose/6.png?rev=@@hash"></i>
+                </li>
+                <li>
+                    <i><img src="../img/common/nose/7.png?rev=@@hash"></i>
+                    <i><img src="../img/common/nose/8.png?rev=@@hash"></i>
+                    <i><img src="../img/common/nose/9.png?rev=@@hash"></i>
+                    <i><img src="../img/common/nose/10.png?rev=@@hash"></i>
+                    <i><img src="../img/common/nose/11.png?rev=@@hash"></i>
+                    <i><img src="../img/common/nose/12.png?rev=@@hash"></i>
+                </li>
+                <li>
+                    <i><img src="../img/common/nose/13.png?rev=@@hash"></i>
+                    <i><img src="../img/common/nose/14.png?rev=@@hash"></i>
+                    <i><img src="../img/common/nose/15.png?rev=@@hash"></i>
+                    <i><img src="../img/common/nose/16.png?rev=@@hash"></i>
+                    <i><img src="../img/common/nose/17.png?rev=@@hash"></i>
+                    <i><img src="../img/common/nose/18.png?rev=@@hash"></i>
+                </li>
+                <li>
+                    <i><img src="../img/common/nose/19.png?rev=@@hash"></i>
+                    <i><img src="../img/common/nose/20.png?rev=@@hash"></i>
+                    <i><img src="../img/common/nose/21.png?rev=@@hash"></i>
                 </li>
 
                 <a class="prev"><i></i></a>
@@ -197,6 +265,30 @@
                     <i><img src="../img/common/mouth/11.png?rev=@@hash"></i>
                     <i><img src="../img/common/mouth/12.png?rev=@@hash"></i>
                 </li>
+                <li>
+                    <i><img src="../img/common/mouth/13.png?rev=@@hash"></i>
+                    <i><img src="../img/common/mouth/14.png?rev=@@hash"></i>
+                    <i><img src="../img/common/mouth/15.png?rev=@@hash"></i>
+                    <i><img src="../img/common/mouth/16.png?rev=@@hash"></i>
+                    <i><img src="../img/common/mouth/17.png?rev=@@hash"></i>
+                    <i><img src="../img/common/mouth/18.png?rev=@@hash"></i>
+                </li>
+                <li>
+                    <i><img src="../img/common/mouth/19.png?rev=@@hash"></i>
+                    <i><img src="../img/common/mouth/20.png?rev=@@hash"></i>
+                    <i><img src="../img/common/mouth/21.png?rev=@@hash"></i>
+                    <i><img src="../img/common/mouth/22.png?rev=@@hash"></i>
+                    <i><img src="../img/common/mouth/23.png?rev=@@hash"></i>
+                    <i><img src="../img/common/mouth/24.png?rev=@@hash"></i>
+                </li>
+                <li>
+                    <i><img src="../img/common/mouth/25.png?rev=@@hash"></i>
+                    <i><img src="../img/common/mouth/26.png?rev=@@hash"></i>
+                    <i><img src="../img/common/mouth/27.png?rev=@@hash"></i>
+                    <i><img src="../img/common/mouth/28.png?rev=@@hash"></i>
+                    <i><img src="../img/common/mouth/29.png?rev=@@hash"></i>
+                    <i><img src="../img/common/mouth/30.png?rev=@@hash"></i>
+                </li>
 
                 <a class="prev"><i></i></a>
                 <a class="next"><i></i></a>
@@ -210,6 +302,33 @@
                     <i><img src="../img/common/brows/4.png?rev=@@hash"></i>
                     <i><img src="../img/common/brows/5.png?rev=@@hash"></i>
                     <i><img src="../img/common/brows/6.png?rev=@@hash"></i>
+                </li>
+                <li>
+                    <i><img src="../img/common/brows/7.png?rev=@@hash"></i>
+                    <i><img src="../img/common/brows/8.png?rev=@@hash"></i>
+                    <i><img src="../img/common/brows/9.png?rev=@@hash"></i>
+                    <i><img src="../img/common/brows/10.png?rev=@@hash"></i>
+                    <i><img src="../img/common/brows/11.png?rev=@@hash"></i>
+                    <i><img src="../img/common/brows/12.png?rev=@@hash"></i>
+                </li>
+                <li>
+                    <i><img src="../img/common/brows/13.png?rev=@@hash"></i>
+                    <i><img src="../img/common/brows/14.png?rev=@@hash"></i>
+                    <i><img src="../img/common/brows/15.png?rev=@@hash"></i>
+                    <i><img src="../img/common/brows/16.png?rev=@@hash"></i>
+                    <i><img src="../img/common/brows/17.png?rev=@@hash"></i>
+                    <i><img src="../img/common/brows/18.png?rev=@@hash"></i>
+                </li>
+                <li>
+                    <i><img src="../img/common/brows/19.png?rev=@@hash"></i>
+                    <i><img src="../img/common/brows/20.png?rev=@@hash"></i>
+                    <i><img src="../img/common/brows/21.png?rev=@@hash"></i>
+                    <i><img src="../img/common/brows/22.png?rev=@@hash"></i>
+                    <i><img src="../img/common/brows/23.png?rev=@@hash"></i>
+                    <i><img src="../img/common/brows/24.png?rev=@@hash"></i>
+                </li>
+                <li>
+                    <i><img src="../img/common/brows/25.png?rev=@@hash"></i>
                 </li>
 
                 <a class="prev"><i></i></a>
@@ -232,38 +351,62 @@
                 <img src="../img/hairstyle/huaban1.png?rev=@@hash" class="h5">
                 <img src="../img/hairstyle/huaban2.png?rev=@@hash" class="h6">
             </div>
-            <div class="portraitbox type1">
-                <img class="face" src="../img/common/face/1.png">
+
+            <!--
+                脸型      发型
+            	1号 1 2 3 4 5 6 7 12 16 23  ok
+            	2号 1 2 4 8 12 13 14 16 18 21 22  ok
+           		3号 2 6 7 12 13 14 15 16 18 20 23  ok
+            	4号 10 15 18 24  ok
+            	5号 7 15 18 22  ok
+            	6号 2 4 5 8 13 14 16 18 22
+
+            	7号 4 5 7 12 13 14 16 18 22 24
+
+            	8号 4 5 7 12 16 18 22 24
+            	9号 2 4 5 6 7 12 13 15 16 18 22 23 24
+            	10号 2 4 5 7 12 15 16 17 18 22 23 24
+            	11号 3 4 5 6 12 15 16 18 23 24
+            	12号 4 13 15 18 21 22 24
+            	13号 5 8 9 15 16 17 18
+            	14号 6 8 9 18 21
+            	15号 5 6 8 18 23
+                16号 4 5 6 8 9 11 16 18 22
+            -->
+            <div class="portraitbox face14 type18">
+                <img class="face" src="../img/common/face/14.png">
                 <img class="brows" src="../img/common/brows/1.png">
-                <img class="eyes" src="../img/common/eyes/1.png">
-                <img class="nose" src="../img/common/nose/1.png">
-                <img class="mouth" src="../img/common/mouth/1.png">
+                <img class="eyes" src="../img/common/eyes/39.png">
+                <img class="nose" src="../img/common/nose/9.png">
+                <img class="mouth" src="../img/common/mouth/14.png">
             </div>
             <div class="type">
-                <img class="show" src="../img/hairstyle/type/1.png?rev=@@hash">
-                <img src="../img/hairstyle/type/2.png?rev=@@hash">
-                <img src="../img/hairstyle/type/3.png?rev=@@hash">
-                <img src="../img/hairstyle/type/4.png?rev=@@hash">
-                <img src="../img/hairstyle/type/5.png?rev=@@hash">
-                <img src="../img/hairstyle/type/6.png?rev=@@hash">
-                <img src="../img/hairstyle/type/7.png?rev=@@hash">
-                <img src="../img/hairstyle/type/8.png?rev=@@hash">
-                <img src="../img/hairstyle/type/9.png?rev=@@hash">
-                <img src="../img/hairstyle/type/10.png?rev=@@hash">
-                <img src="../img/hairstyle/type/11.png?rev=@@hash">
-                <img src="../img/hairstyle/type/12.png?rev=@@hash">
-                <img src="../img/hairstyle/type/13.png?rev=@@hash">
-                <img src="../img/hairstyle/type/14.png?rev=@@hash">
-                <img src="../img/hairstyle/type/15.png?rev=@@hash">
-                <img src="../img/hairstyle/type/16.png?rev=@@hash">
-                <img src="../img/hairstyle/type/17.png?rev=@@hash">
-                <img src="../img/hairstyle/type/18.png?rev=@@hash">
-                <img src="../img/hairstyle/type/19.png?rev=@@hash">
-                <img src="../img/hairstyle/type/20.png?rev=@@hash">
-                <img src="../img/hairstyle/type/21.png?rev=@@hash">
-                <img src="../img/hairstyle/type/22.png?rev=@@hash">
-                <img src="../img/hairstyle/type/23.png?rev=@@hash">
-                <img src="../img/hairstyle/type/24.png?rev=@@hash">
+            	<!--<img class="show" src="../img/hairstyle/type/style18/14.png?rev=@@hash">
+            	
+                <img src="../img/hairstyle/type/style1/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style2/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style3/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style4/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style5/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style6/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style7/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style8/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style9/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style10/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style11/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style12/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style13/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style14/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style15/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style16/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style17/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style18/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style19/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style20/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style21/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style22/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style23/5.png?rev=@@hash">
+                <img src="../img/hairstyle/type/style24/5.png?rev=@@hash">-->
             </div>
             <div class="text">
                 <img src="../img/hairstyle/text/1.png?rev=@@hash">
@@ -291,7 +434,7 @@
                 <img src="../img/hairstyle/text/23.png?rev=@@hash">
                 <img src="../img/hairstyle/text/24.png?rev=@@hash">
             </div>
-            <div class="sign_name">杀猪黒汉汉</div>
+            <div class="sign_name"></div><!--签名-->
         </div>
 
         <div class="thisTypeWrap active">
@@ -320,10 +463,12 @@
         <div class="layer_name">
             <div class="form">
                 <i></i><!--关闭-->
-                <input type="text" value="" maxlength="5">
+                <input type="text" value="" maxlength="6">
                 <span></span><!--完成-->
             </div>
         </div>
+
+        <div id="testIndex" style="position: absolute; bottom: 0; left: 50%; z-index: 5; width: 360px; height: 100px; margin-left: -180px; background-color: #000; line-height: 100px; font-size: 36px; color: #fff; text-align: center; display: none;">脸型：0，发型：0</div>
     </div>
     <!--选择发型 end-->
 
@@ -335,6 +480,29 @@
         </div>
     </div>
     <!--分享成功落地页 end-->
+
+    <!--重载 start-->
+    <div id="reload">
+        <div class="flowerArea" style="top:50%; left:50%; margin: -120px 0 0 -60px;">
+            <img src="../img/common/loading/pic_01.png" data-animate="{'animation':'rotate', 'details':{'infinite':true, 'function':'linear'}}">
+            <img src="../img/common/loading/pic_02.png" data-animate="{'animation':'rotate', 'details':{'targetAngle':'-360deg', 'infinite':true, 'function':'linear'}}">
+            <img src="../img/common/loading/pic_03.png" data-animate="{'animation':'rotate', 'details':{'infinite':true, 'function':'linear'}}">
+            <img src="../img/common/loading/pic_06.png" style="bottom:-65px; left:-25px;">
+        </div>
+    </div>
+    <!--重载 end-->
+
+    <!-- dialog start -->
+    <div id="dialog">
+        <div id="diaBlack"></div>
+        <div id="diaBg"></div>
+        <span id="diaTitle"> </span>
+        <span id="diaText">别淘气，让我看到你的脸</span>
+        <span id="diaTxt">重新上传</span>
+        <div id="diaLine"></div>
+        <div id="diaBtn"></div>
+    </div>
+    <!-- dialog end -->
 
 </div>
 <!--页面主体 end-->
@@ -348,7 +516,7 @@
 
 <!--<script src="../js/all-min.js?rev=@@hash" data-autoRender="true"></script>-->
 <link rel="stylesheet" type="text/css" href="../css/flower.css?rev=@@hash">
-<script src="../js/viewport.js"></script>
+<script src="../js/viewport.js?rev=@@hash"></script>
 <script src="../js/zepto.min.js"></script>
 <script src="../js/promise-0.1.1.min.js"></script>
 <script src="../js/html2canvas.js"></script>
@@ -359,8 +527,34 @@
 <script src="../js/fx.js"></script>
 <script src="../js/cssSprite.js"></script>
 <script src="../js/scrollbar.js"></script>
-<script src="../js/index.js"></script>
+<script src="../js/exif.js"></script>
+<script src="../js/mobileBUGFix.mini.js"></script>
+<script src="../js/upload.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+    ga('create', 'UA-58705123-2');
+    ga('send', 'pageview');
+
+    function ClickEvent(event,interaction) {
+        event = event.toUpperCase();
+        interaction=interaction||false;
+        if (event.indexOf("BUT_") != -1) {
+
+            try{ga('send', 'event', 'BUT', event, {'nonInteraction': interaction});}
+            catch(err){};
+        }
+        else {
+
+            try{ga('send', 'pageview',event, {'nonInteraction': interaction});}
+            catch(err){};
+        }
+    }
+</script>
+<script src="../js/index.js"></script>
 
 <script src="http://pantenecny.agenda-bj.com.cn/share/js/jweixin-1.0.0.js"></script>
 <script src="http://pantenecny.agenda-bj.com.cn/share/js/weixin.js"></script>

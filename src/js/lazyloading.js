@@ -12,15 +12,22 @@
 
             //延迟loading变量
             aLoadData = [],
-            loadCur = -1,
+            loadCur = 0,
             loadSpeed = 30,
             loadListenI = 0,
             isProgress = false,
             loadListenTimer = null;
 
+        var defs = {
+            'concat': true
+        };
+
+        $.extend(defs, settings);
+
         $this.concat = function( arr ) {
             var collection = [];
 
+            if ( !defs.concat ) return $this;
             arr.forEach(function(item) {
                 var img = new Image();
                 img.src = item;
@@ -36,6 +43,15 @@
 
             return $this;
         };
+
+        if ( !defs.concat ) {
+            loadImages({
+                '$imgs': $imgArr,
+                'progressFn': function(percent) {
+                    aLoadData.push(percent);
+                }
+            });
+        }
 
         $this.progress = function( fn ) {
             $this.on('progress', function(ev) {

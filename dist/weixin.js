@@ -8,9 +8,9 @@ var url = document.location.href;
 function wxConfig( settings ) {
 
     var defs = {
-        'wx_title': '已经有10万人与潘婷共同预见自己2016年女神新发型',
+        'wx_title': '今年有没有新恋情新事业？换个发型就知道！还能赢机票！',
         'wx_desc': '',
-        'wx_link': 'http://pantenecny.agenda-bj.com.cn/html/',
+        'wx_link': 'http://pantenecny.agenda-bj.com.cn/version3/html/index.html',
         'wx_imgUrl': 'http://pantenecny.agenda-bj.com.cn/share/img/share.png',
         'reurl': ''
     };

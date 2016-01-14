@@ -4127,15 +4127,22 @@ module.exports = XHR;
 
             //延迟loading变量
             aLoadData = [],
-            loadCur = -1,
+            loadCur = 0,
             loadSpeed = 30,
             loadListenI = 0,
             isProgress = false,
             loadListenTimer = null;
 
+        var defs = {
+            'concat': true
+        };
+
+        $.extend(defs, settings);
+
         $this.concat = function( arr ) {
             var collection = [];
 
+            if ( !defs.concat ) return $this;
             arr.forEach(function(item) {
                 var img = new Image();
                 img.src = item;
@@ -4151,6 +4158,15 @@ module.exports = XHR;
 
             return $this;
         };
+
+        if ( !defs.concat ) {
+            loadImages({
+                '$imgs': $imgArr,
+                'progressFn': function(percent) {
+                    aLoadData.push(percent);
+                }
+            });
+        }
 
         $this.progress = function( fn ) {
             $this.on('progress', function(ev) {
@@ -4773,20 +4789,16 @@ CssSprite.prototype.stop = function() {
             oFlowerArea = oBox.find('.flowerArea');
 
         //选取body 延迟加载
-        $('body').lazyLoading()
-            .concat([
-                '../img/common/face/1.png', '../img/common/face/2.png', '../img/common/face/3.png',
-                '../img/common/face/4.png', '../img/common/face/5.png', '../img/common/face/6.png'
-            ])
+        $('body').lazyLoading({'concat':false})
             .progress(function(percent) {
                 oI.addClass('active');
                 oP.text(percent+'%');
                 oBdo.css('width', percent+'%');
             })
             .callBack(function() {
-                //oBox.fadeOut({'removeClass':'active'});
-                //homeModule.show();
-                //oFlowerArea.removeClass('active');
+                oBox.fadeOut({'removeClass':'active'});
+                homeModule.show();
+                oFlowerArea.removeClass('active');
             });
 
     })();
@@ -4827,7 +4839,6 @@ CssSprite.prototype.stop = function() {
         }
 
     })();
-    homeModule.show();
 
 
     //选择图片
@@ -4835,47 +4846,123 @@ CssSprite.prototype.stop = function() {
 
         var oBox = $('#select'),
             oFileUpload = jQuery('.inp_fileToUpload'),
-            oWeixinUpload = oBox.find('.weixinUpload');
+            oWeixinUpload = oBox.find('.weixinUpload'),
+            oHandleResult = oBox.find('.handleResult'),
+            oResultLi = oHandleResult.find('li'),
+            oThisImg = oResultLi.eq(0),
+            oResultWeixinUpload = oResultLi.eq(1),
+            uploadImgUrl = '';
+
+        var dialog = $("#dialog");
+        var diaBtn = $("#diaBtn");
+        var diaText = $("#diaText");
 
         oFileUpload.removeClass('active');
         oWeixinUpload.removeClass('active');
-        isWeixin ? oWeixinUpload.addClass('active') : oFileUpload.addClass('active');
+        if ( isWeixin ) {
+            oWeixinUpload.addClass('active');
+            oResultLi.eq(2).hide();
+        } else {
+            oFileUpload.addClass('active');
+            oResultWeixinUpload.hide();
+        }
 
+        //普通ajax上传
         oFileUpload.live("change", function () {//现在这个已经适用于多个file表单。
-            ajaxFileUpload({'file_id':jQuery(this).attr("id"), 'callBack':function(data) {
-                var newUrl = data;
-                if ( data.indexOf('http://pantenecny.agenda-bj.com.cn') == -1 ) {
-                    newUrl = 'http://pantenecny.agenda-bj.com.cn' + data;
+            handleAjaxUpload(jQuery(this).attr("id"));
+        });
+
+        //相机页 微信上传
+        oWeixinUpload.on('click', function() {
+            handleWeixinUpload();
+        });
+
+        //结果页 微信上传
+        oResultWeixinUpload.on('click', function() {
+            handleWeixinUpload();
+        });
+
+        //弹窗确定按钮
+        diaBtn.on('click', function() {
+            previewModule.hide();
+            selectModule.show();
+            oHandleResult.removeClass('active');
+            dialog.hide();
+        });
+
+        //结果页 就这个
+        oThisImg.on('click', function() {
+            var oCartoon = $('#preview .cartoon'),
+                oFlowerArea = oCartoon.find('.flowerArea');
+
+            $('#preview .picArea').css('background-image', 'url("'+ uploadImgUrl +'")');
+            oFlowerArea.addClass('active');
+            oBox.fadeOut({'removeClass':'active'});
+            previewModule.show();
+            faceAnalysis({'img_url':uploadImgUrl, 'callBack':function(faceData) {
+
+                if ( faceData.err_code ) {
+                    dialog.show();
+                    diaText.text(faceData.err_msg);
+                    return;
                 }
-                //$('#urltest').val(newUrl);
-                //alert('服务器上的图片地址：'+newUrl);
-                faceAnalysis({'img_url':newUrl, 'callBack':function(faceData) {
-                    //$('#urltest').val(JSON.stringify(faceData));
-                    setPortrait({'data':faceData, 'callBack':function() {
-                        oBox.fadeOut({'removeClass':'active'});
-                        previewModule.show();
-                        //添加哈希管理
-                        //hashModule.addHash('preview');
-                    }});
+                if ( !faceData.has ) {
+                    dialog.show();
+                    diaText.text('没有人脸：别淘气，让我看到你的脸');
+                    return;
+                }
+                /*if ( faceData.gender == 1 ) {
+                    alert('请上传女生头像');
+                    previewModule.hide();
+                    selectModule.show();
+                    oHandleResult.removeClass('active');
+                    return;
+                }*/
+
+                setPortrait({'data':faceData, 'callBack':function() {
+                    setTimeout(function() {
+                        oCartoon.find('.load').removeClass('active');
+                        oFlowerArea.removeClass('active');
+                        $('.cartoon .content').addClass('active');
+                    }, 1000);
                 }});
             }});
         });
 
-        oWeixinUpload.on('click', function() {
-            requestServer.select({'callBack': function(data) {
-                //$('#urltest').val(data);
-                //alert('服务器上的图片地址：'+data);
-                faceAnalysis({'img_url':data, 'callBack':function(faceData) {
-                    //$('#urltest').val(JSON.stringify(faceData));
-                    setPortrait({'data':faceData, 'callBack':function() {
-                        oBox.fadeOut({'removeClass':'active'});
-                        previewModule.show();
-                        //添加哈希管理
-                        //hashModule.addHash('preview');
-                    }});
-                }});
+
+        ///////////////处理普通ajax上传//////////////////
+        function handleAjaxUpload( fileId ) {//jQuery(this).attr("id")
+            ajaxFileUpload({'file_id':fileId, 'callBack':function(data) {
+                uploadImgUrl = data;
+                if ( data.indexOf('http://pantenecny.agenda-bj.com.cn') == -1 ) {
+                    uploadImgUrl = 'http://pantenecny.agenda-bj.com.cn' + data;
+                }
+                //alert('服务器上的图片地址：'+uploadImgUrl);
+                showResultPage(uploadImgUrl);
             }});
-        });
+        }
+
+        ///////////////处理微信上传//////////////////
+        function handleWeixinUpload() {
+            requestServer.select({'callBack': function(data) {
+                //alert('服务器上的图片地址：'+data);
+                uploadImgUrl = data;
+                showResultPage(uploadImgUrl);
+            }});
+        }
+
+        ///////////////处理上传之后的结果页//////////////////
+        function showResultPage( imgUrl ) {
+            var newImg = new Image();
+
+            newImg.onload = function() {
+                oHandleResult.css('background-image', 'url("'+ imgUrl +'")').addClass('active');
+            };
+            newImg.onerror = function() {
+                alert('处理失败，请重新上传');
+            };
+            newImg.src = imgUrl;
+        }
 
 
 
@@ -4900,11 +4987,7 @@ CssSprite.prototype.stop = function() {
 
             //alert(JSON.stringify(data));
             facePortrait.attr('src', '../img/common/face/'+ data.face +'.png');
-            if ( data.glass ) {
-                eyesPortrait.attr('src', '../img/common/eyes/24.png');
-            } else {
-                eyesPortrait.attr('src', '../img/common/eyes/'+ data.eyes +'.png');
-            }
+            eyesPortrait.attr('src', '../img/common/eyes/'+ data.eyes +'.png');
             nosePortrait.attr('src', '../img/common/nose/'+ data.nose +'.png');
             mouthPortrait.attr('src', '../img/common/mouth/'+ data.mouth +'.png');
             browsPortrait.attr('src', '../img/common/brows/'+ data.brows +'.png');
@@ -4939,10 +5022,6 @@ CssSprite.prototype.stop = function() {
         return {
             'show': function() {
                 oBox.fadeIn({'addClass':'active'});
-                /*setTimeout(function() {
-                    oBox.fadeOut({'removeClass':'active'});
-                    previewModule.show();
-                }, 2000);*/
             }
         }
 
@@ -4956,8 +5035,9 @@ CssSprite.prototype.stop = function() {
     var previewModule = (function() {
 
         var oBox = $('#preview'),
-            oDressup = oBox.find('.dressup'),
-            oTurnhairstyle = oBox.find('.turnhairstyle');
+            aBtn = oBox.find('ol.btns li'),
+            oDressup = aBtn.eq(0),
+            oTurnhairstyle = aBtn.eq(1);
 
         //不够美，调一下
         oDressup.on('click', function() {
@@ -4976,6 +5056,9 @@ CssSprite.prototype.stop = function() {
         });
 
         return {
+            'hide': function() {
+                oBox.fadeOut({'removeClass':'active'});
+            },
             'show': function() {
                 oBox.fadeIn({'addClass':'active'});
             }
@@ -4999,6 +5082,7 @@ CssSprite.prototype.stop = function() {
 
         //所有头像
         var aPortraitbox = $('.portraitbox'),
+            facePortrait = aPortraitbox.find('.face'),
             eyesPortrait = aPortraitbox.find('.eyes'),
             nosePortrait = aPortraitbox.find('.nose'),
             mouthPortrait = aPortraitbox.find('.mouth'),
@@ -5008,30 +5092,9 @@ CssSprite.prototype.stop = function() {
         aTabLi.on('click', function() {
             var index = $(this).index();
             oTabBox.removeClass().addClass('tab'+(index+1));
-
-            switch (index) {
-                case 0:
-                    //切换到 眼睛
-                    allUl.removeClass('active').eq(0).addClass('active');
-                    break;
-                case 1:
-                    //切换到 鼻子
-                    allUl.removeClass('active').eq(1).addClass('active');
-                    break;
-                case 2:
-                    //切换到 嘴型
-                    allUl.removeClass('active').eq(2).addClass('active');
-                    break;
-                case 3:
-                    //切换到 眉毛
-                    allUl.removeClass('active').eq(3).addClass('active');
-                    break;
-            }
+            allUl.removeClass('active').eq(index).addClass('active');
         });
 
-
-        //$this = $(this),
-        //thisParent = $this.parent(),
         function prevMethod( thisParent ) {
             var thisLi = thisParent.find('li'),
                 thisIndex = Number(thisParent.attr('_index'));
@@ -5087,7 +5150,10 @@ CssSprite.prototype.stop = function() {
             $this.siblings('i').removeClass();
             $this.addClass('select');
 
-            if ( thisImgSrc.indexOf('eyes') != -1 ) {
+            if ( thisImgSrc.indexOf('face') != -1 ) {
+                //脸型
+                facePortrait.attr('src', thisImgSrc);
+            } else if ( thisImgSrc.indexOf('eyes') != -1 ) {
                 //眼睛
                 eyesPortrait.attr('src', thisImgSrc);
             } else if ( thisImgSrc.indexOf('nose') != -1 ) {
@@ -5130,16 +5196,22 @@ CssSprite.prototype.stop = function() {
             oTextImg = oBox.find('.text img'),
             typeLen = aTypeImg.length,
             oThisType = oBox.find('.thistype'),
-            oAgain = oBox.find('.again'),
-            oSave = oBox.find('.save'),
-            oGift = oBox.find('.gift'),
+            aBtnThree = oBox.find('ol.btns'),
+            oAgain = aBtnThree.find('li').eq(0),
+            oSave = aBtnThree.find('li').eq(1),
+            oGift = aBtnThree.find('li').eq(2),
             oLayerShare = oBox.find('.layer_share'),
             oCanvasArea = oBox.find('.canvasArea'),
             oScreenshot = oBox.find('.screenshot'),
+            oLayerName = oBox.find('.layer_name'),
+            oLayerNameInput = oLayerName.find('input'),
+            oSignName = oBox.find('.sign_name'),
             allowSelect = true,
             typeIndex = -1,
             typeTimer = null,
-            shareTimer = null;
+            shareTimer = null,
+            nameTimer = null,
+            oSignNameStr = '';
 
         function playType() {
             clearInterval(typeTimer);
@@ -5154,6 +5226,13 @@ CssSprite.prototype.stop = function() {
             clearTimeout(shareTimer);
             shareTimer = setTimeout(function() {
                 oLayerShare.fadeIn({'addClass':'active'});
+            }, time);
+        }
+
+        function showLayerName(time) {
+            clearTimeout(nameTimer);
+            nameTimer = setTimeout(function() {
+                oLayerName.fadeIn({'addClass':'active'});
             }, time);
         }
 
@@ -5187,7 +5266,7 @@ CssSprite.prototype.stop = function() {
                     result = msg;
                 },
                 error: function(err) {
-                    alert('服务器无响应');
+                    //alert('服务器无响应');
                 }
             });
 
@@ -5221,23 +5300,25 @@ CssSprite.prototype.stop = function() {
 
                     oShareIcon.removeClass('active');
                     if ( sUrl.indexOf('localhost:63342') == -1 ) {
-                        var imgUrl = base64ToPic(canvas2.toDataURL());
+                        var imgUrl = base64ToPic(canvas2.toDataURL()),
+                            shareTitle = oSignNameStr != '' ? oSignNameStr+'在这里抽中了属于她的2016新发型！' : '已经有10万人与潘婷共同预见自己2016年女神新发型';
+
                         if ( sUrl.indexOf('meitu.html') != -1 ) {
                             //美图秀秀设置分享图文
                             //设置分享到微信好友
                             $('#shareWeixin').attr('href', 'mtcommand://share?'+serialize({
                                 type: 'weixin',
-                                content: encodeURIComponent('已经有10万人与潘婷共同预见自己2016年女神新发型'),
+                                content: encodeURIComponent(shareTitle),
                                 imageurl: imgUrl,
-                                link: encodeURIComponent('http://pantenecny.agenda-bj.com.cn/html/')
+                                link: encodeURIComponent('http://pantenecny.agenda-bj.com.cn/version2/html/index.html')
                             }));
 
                             //设置分享到微信朋友圈
                             $('#shareWeixinCircle').attr('href', 'mtcommand://share?'+serialize({
                                 type: 'weixincircle',
-                                content: encodeURIComponent('已经有10万人与潘婷共同预见自己2016年女神新发型'),
+                                content: encodeURIComponent(shareTitle),
                                 imageurl: imgUrl,
-                                link: encodeURIComponent('http://pantenecny.agenda-bj.com.cn/html/')
+                                link: encodeURIComponent('http://pantenecny.agenda-bj.com.cn/version2/html/index.html')
                             }));
                             //alert($('#shareWeixin').attr('href'));
                             //alert($('#shareWeixinCircle').attr('href'));
@@ -5245,11 +5326,20 @@ CssSprite.prototype.stop = function() {
 
                             //camera360分享配置
                             //初始化分享图文及link
-                            window.pgResetShare && window.pgResetShare({'imgUrl':imgUrl, 'reurl':'http://wqs.jd.com/event/brand/pantingyaoyiyao/index.shtml'});
+                            window.pgResetShare && window.pgResetShare({
+                                'imgUrl':imgUrl,
+                                'title': shareTitle,
+                                'link': 'http://pantenecny.agenda-bj.com.cn/version2/html/index.html',
+                                'reurl':'http://wqs.jd.com/event/brand/pantingyaoyiyao/index.shtml'
+                            });
 
                         } else {
                             //微信客户端设置分享图文
-                            isWeixin && wxConfig && wxConfig({'wx_imgUrl':imgUrl, 'reurl':'http://wqs.jd.com/event/brand/pantingyaoyiyao/index.shtml'});
+                            isWeixin && wxConfig && wxConfig({
+                                'wx_imgUrl': imgUrl,
+                                'wx_title': shareTitle,
+                                'reurl': 'http://wqs.jd.com/event/brand/pantingyaoyiyao/index.shtml'
+                            });
                         }
                     }
                 });
@@ -5296,13 +5386,12 @@ CssSprite.prototype.stop = function() {
 
             allowSelect = false;
             clearInterval(typeTimer);
+            oThisType.parent().removeClass('active');
             html2CanvasAPI(function() {
                 oFlower.addClass('active'); //播放花瓣掉落场景
-                oThisType.removeClass('active');
-                oAgain.addClass('active');
-                oSave.addClass('active');
-                oGift.addClass('active');
-                showShare(8000);
+                aBtnThree.addClass('active');
+                showLayerName(2000);
+                //showShare(15000);
                 /*oBox.one('touchstart', function() {
                     //clearTimeout(shareTimer);
                     showShare(20000);
@@ -5316,20 +5405,44 @@ CssSprite.prototype.stop = function() {
 
         //点击再试一次
         oAgain.on('click', function() {
+            clearTimeout(nameTimer);
             clearTimeout(shareTimer);
-            $(this).removeClass('active');
-            oSave.removeClass('active');
-            oGift.removeClass('active');
-            oThisType.addClass('active');
+            aBtnThree.removeClass('active');
+            oThisType.parent().addClass('active');
             oCanvasArea.removeClass('active').html('');
             oTextImg.removeClass();
+            oSignName.removeClass('active').html('');
             playType();
             allowSelect = true;
+            oSignNameStr = '';
             //wxConfig && wxConfig({'wx_imgUrl':'http://pantenecny.agenda-bj.com.cn/share/img/share.png', 'reurl':''});
+        });
+
+        //点击抢限量礼盒
+        oGift.on('click', function() {
+            location.href = 'http://wqs.jd.com/event/brand/pantingyaoyiyao/index.shtml';
         });
 
         oSave.on('touchstart', function() {
             return false;
+        });
+
+        //输入昵称 关闭按钮
+        oLayerName.find('i').on('click', function() {
+            showShare(8000);
+            oLayerName.fadeOut({'removeClass':'active'});
+        });
+
+        //输入昵称 完成
+        oLayerName.find('span').on('click', function() {
+            oSignNameStr = oLayerNameInput.val();
+            oSignName.text(oSignNameStr).addClass('active');
+            setTimeout(function() {
+                html2CanvasAPI(function() {
+                    oLayerName.fadeOut({'removeClass':'active'});
+                    showShare(8000);
+                });
+            }, 500);
         });
 
         return {

@@ -177,9 +177,13 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     top: 157px;
     left: 38px;
 }
-#home img.tit {
+#home img.tit1 {
     top: 572px;
-    left: 44px;
+    left: 150px;
+}
+#home img.tit2 {
+    top: 652px;
+    left: 45px;
 }
 #home a.start {
     display: block;
@@ -192,19 +196,38 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
 }
 
 /*选择图片*/
-#select img.camera, #select .inp_fileToUpload, #select .weixinUpload {
+#select .fileReaderArea {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#select .fileReaderArea img {
+    position: static;
+}
+#select .camera, #select .inp_fileToUpload, #select .weixinUpload {
     top: 308px;
     left: 77px;
 }
 #select .inp_fileToUpload, #select .weixinUpload {
-    width: 597px;
-    height: 617px;
+    width: 100%;
+    height: 100%;
     position: absolute;
+    top: 0;
+    left: 0;
     opacity: 0;
     display: none;
 }
 #select .inp_fileToUpload.active, #select .weixinUpload.active {
     display: block;
+}
+#select .camera {
+    position: absolute;
+    width: 80.13%;
+}
+#select .camera img.camerabg {
+    position: static;
 }
 #select .handleResult {
     width: 100%;
@@ -212,10 +235,24 @@ input:-ms-input-placeholder { /* Internet Explorer 10+ */
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 3;
+    background: url("../img/select/pic_03.jpg") center no-repeat;
+    background-size: cover;
+    background-color: #fff;
     display: none;
 }
 #select .handleResult.active {
     display: block;
+}
+#select ol.btns li:nth-of-type(2) {
+    right: 0;
+}
+#select ol.btns li:nth-last-of-type(1) input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: static;
 }
 
 ol.btns {
@@ -258,20 +295,20 @@ ol.btns li:nth-last-of-type(1) {
     left: 52px;
 }
 .portraitbox img.brows {
-    top: 248px;
-    left: 115px;
+    top: 270px;/*248px*/
+    left: 105px;
 }
 .portraitbox img.eyes {
-    top: 285px;
-    left: 73px;
+    top: 280px;
+    left: 65px;
 }
 .portraitbox img.nose {
-    top: 340px;
-    left: 300px;
+    top: 336px;
+    left: 280px;
 }
 .portraitbox img.mouth {
-    top: 590px;
-    left: 255px;
+    top: 585px;/*590px*/
+    left: 248px;
 }
 .portraitbox img.bang {
     top: 15px;
@@ -295,11 +332,11 @@ ol.btns li:nth-last-of-type(1) {
     left: 13px;
     overflow: hidden;
 }
-#preview .picArea img {
-    top: 50%;
-    margin-top: -499px;
+#preview .picArea {
+    background: url("../img/select/pic_03.jpg") center no-repeat;
+    background-size: cover;
+    background-color: #fff;
 }
-
 #preview .cartoon {
     bottom: 108px;
 }
@@ -322,7 +359,7 @@ ol.btns li:nth-last-of-type(1) {
 #preview .cartoon .content .portraitbox {
     -webkit-transform: scale(0.65);
     transform: scale(0.65);
-    top: -250px;
+    top: -235px;
     left: -10px;
 }
 
@@ -333,7 +370,7 @@ ol.btns li:nth-last-of-type(1) {
 
 /*编辑*/
 #edit {
-    background-color: #000;
+    background-color: #1f1f1f;
 }
 #edit .portraitbox {
     top: -160px;
@@ -538,42 +575,1050 @@ ol.btns li:nth-last-of-type(1) {
 }
 
 #hairstyle .portraitbox {
+    -webkit-transform: scale(0.38);
+    transform: scale(0.38);
+    top: -70px;
+    left: 30px;
+}
+/*#hairstyle .portraitbox img.brows {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+}*/
+#hairstyle .portraitbox img.eyes {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+}
+#hairstyle .portraitbox img.mouth {
+    top: 568px;
+}
+#hairstyle .portraitbox.face1.type1 img.mouth, #hairstyle .portraitbox.face2.type2 img.mouth, #hairstyle .portraitbox.face1.type3 img.mouth, #hairstyle .portraitbox.face1.type4 img.mouth, #hairstyle .portraitbox.face1.type5 img.mouth, #hairstyle .portraitbox.face1.type6 img.mouth, #hairstyle .portraitbox.face1.type7 img.mouth, #hairstyle .portraitbox.face1.type8 img.mouth, #hairstyle .portraitbox.face1.type9 img.mouth {
+    top: 590px;
+}
+
+/*300多个脸型样式如下*/
+/****脸型1****/
+#hairstyle .portraitbox.face1.type1 {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+}
+#hairstyle .portraitbox.face1.type2 {
+    -webkit-transform: scale(0.38);
+    transform: scale(0.38);
+    top: -80px;
+}
+#hairstyle .portraitbox.face1.type3 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -80px;
+}
+#hairstyle .portraitbox.face1.type4 {
+    top: -80px;
+    left: 27px;
+}
+#hairstyle .portraitbox.face1.type5 {
+    -webkit-transform: scale(0.39);
+    transform: scale(0.39);
+    left: 25px;
+}
+#hairstyle .portraitbox.face1.type6 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -85px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face1.type7 {
+    -webkit-transform: scale(0.38);
+    transform: scale(0.38);
+    top: -85px;
+    left: 30px;
+}
+#hairstyle .portraitbox.face1.type8, #hairstyle .portraitbox.face1.type9 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    top: -72px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face1.type12 {
+    -webkit-transform: scale(0.36);
+    transform: scale(0.36);
+    top: -75px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face1.type16 {
+    -webkit-transform: scale(0.36);
+    transform: scale(0.36);
+    top: -75px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face1.type23 {
+    -webkit-transform: scale(0.365);
+    transform: scale(0.365);
+    top: -75px;
+    left: 37px;
+}
+
+/****脸型2****/
+#hairstyle .portraitbox.face2.type1 {
+    -webkit-transform: scale(0.36);
+    transform: scale(0.36);
+    top: -72px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face2.type2 {
+    -webkit-transform: scale(0.355);
+    transform: scale(0.355);
+    top: -75px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face2.type4 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    top: -78px;
+    left: 27px;
+}
+#hairstyle .portraitbox.face2.type8 {
+    -webkit-transform: scale(0.355);
+    transform: scale(0.355);
+    top: -67px;
+    left: 25px;
+}
+#hairstyle .portraitbox.face2.type12 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    top: -75px;
+    left: 25px;
+}
+#hairstyle .portraitbox.face2.type13 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    top: -75px;
+    left: 25px;
+}
+#hairstyle .portraitbox.face2.type14 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    top: -75px;
+    left: 25px;
+}
+#hairstyle .portraitbox.face2.type15 {
+    left: 23px;
+}
+#hairstyle .portraitbox.face2.type16 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    top: -75px;
+    left: 25px;
+}
+#hairstyle .portraitbox.face2.type18 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    top: -75px;
+    left: 25px;
+}
+#hairstyle .portraitbox.face2.type20 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    top: -75px;
+    left: 25px;
+}
+#hairstyle .portraitbox.face2.type22 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    top: -72px;
+    left: 25px;
+}
+#hairstyle .portraitbox.face2.type23 {
+    left: 38px;
+}
+
+/****脸型3****/
+#hairstyle .portraitbox.face3.type2 {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+    top: -78px;
+    left: 28px;
+}
+#hairstyle .portraitbox.face3.type5 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+}
+#hairstyle .portraitbox.face3.type6 {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+    top: -78px;
+    left: 28px;
+}
+#hairstyle .portraitbox.face3.type7 {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+    top: -78px;
+    left: 28px;
+}
+#hairstyle .portraitbox.face3.type11 {
+    top: -80px;
+}
+#hairstyle .portraitbox.face3.type12 {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+    top: -78px;
+    left: 28px;
+}
+#hairstyle .portraitbox.face3.type13 {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+    top: -78px;
+    left: 28px;
+}
+#hairstyle .portraitbox.face3.type14 {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+    top: -78px;
+    left: 28px;
+}
+#hairstyle .portraitbox.face3.type15 {
+    -webkit-transform: scale(0.36);
+    transform: scale(0.36);
+    top: -75px;
+    left: 25px;
+}
+#hairstyle .portraitbox.face3.type16 {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+    top: -78px;
+    left: 28px;
+}
+#hairstyle .portraitbox.face3.type18 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    top: -73px;
+    left: 22px;
+}
+#hairstyle .portraitbox.face3.type20 {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+    top: -78px;
+    left: 28px;
+}
+#hairstyle .portraitbox.face3.type22 {
+    -webkit-transform: scale(0.335);
+    transform: scale(0.335);
+}
+#hairstyle .portraitbox.face3.type23 {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+    top: -65px;
+    left: 40px;
+}
+
+/****脸型4****/
+#hairstyle .portraitbox.face4.type10 {
+    -webkit-transform: scale(0.36);
+    transform: scale(0.36);
+    top: -65px;
+    left: 25px;
+}
+#hairstyle .portraitbox.face4.type15 {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+    top: -63px;
+    left: 23px;
+}
+#hairstyle .portraitbox.face4.type18 {
+    -webkit-transform: scale(0.33);
+    transform: scale(0.33);
+    top: -70px;
+    left: 25px;
+}
+#hairstyle .portraitbox.face4.type24 {
+    -webkit-transform: scale(0.33);
+    transform: scale(0.33);
+    top: -68px;
+    left: 28px;
+}
+
+/*--------------------------------------------------------------------*/
+
+/****脸型5****/
+#hairstyle .portraitbox.face5.type7 {
     -webkit-transform: scale(0.34);
     transform: scale(0.34);
     top: -70px;
-    left: 22px;
+    left: 28px;
 }
-#hairstyle .portraitbox.type3 {
+#hairstyle .portraitbox.face5.type15 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 20px;
+}
+#hairstyle .portraitbox.face5.type18 {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+    top: -70px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face5.type22 {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+    top: -70px;
+    left: 24px;
+}
+
+/****脸型6****/
+#hairstyle .portraitbox.face6.type2 {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+    top: -70px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face6.type4 {
     -webkit-transform: scale(0.35);
     transform: scale(0.35);
+    top: -72px;
     left: 25px;
 }
-#hairstyle .portraitbox.type4, #hairstyle .portraitbox.type7, #hairstyle .portraitbox.type11 {
-    -webkit-transform: scale(0.3);
-    transform: scale(0.3);
-    left: 50px;
+#hairstyle .portraitbox.face6.type5 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    top: -70px;
+    left: 24px;
 }
-#hairstyle .portraitbox.type12 {
+#hairstyle .portraitbox.face6.type8 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 22px;
+}
+#hairstyle .portraitbox.face6.type13 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    top: -72px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face6.type14 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -80px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face6.type16 {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+    top: -70px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face6.type18 {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+    top: -70px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face6.type22 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    top: -75px;
+    left: 26px;
+}
+
+/****脸型7****/
+#hairstyle .portraitbox.face7.type4 {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+    top: -70px;
+    left: 28px;
+}
+#hairstyle .portraitbox.face7.type5 {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+    top: -70px;
+    left: 29px;
+}
+#hairstyle .portraitbox.face7.type7 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 28px;
+}
+#hairstyle .portraitbox.face7.type12 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 28px;
+}
+#hairstyle .portraitbox.face7.type13 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 28px;
+}
+#hairstyle .portraitbox.face7.type16 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 29px;
+}
+#hairstyle .portraitbox.face7.type18 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 28px;
+}
+#hairstyle .portraitbox.face7.type22 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 28px;
+}
+#hairstyle .portraitbox.face7.type24 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 29px;
+}
+
+/****脸型8****/
+#hairstyle .portraitbox.face8.type4 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face8.type5 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face8.type7 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face8.type12 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face8.type16 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face8.type18 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 28px;
+}
+#hairstyle .portraitbox.face8.type22 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face8.type24 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 28px;
+}
+
+/****脸型9****/
+#hairstyle .portraitbox.face9.type2 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face9.type4 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face9.type5 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face9.type6 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 25px;
+}
+#hairstyle .portraitbox.face9.type7 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face9.type12 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face9.type13 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face9.type15 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 21px;
+}
+/*#hairstyle .portraitbox.face9.type16 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 24px;
+}*/
+#hairstyle .portraitbox.face9.type18 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 22px;
+}
+#hairstyle .portraitbox.face9.type22 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 25px;
+}
+#hairstyle .portraitbox.face9.type23 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 35px;
+}
+#hairstyle .portraitbox.face9.type24 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 26px;
+}
+
+/****脸型10****/
+#hairstyle .portraitbox.face10.type2 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face10.type4 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face10.type5 {
+    -webkit-transform: scale(0.39);
+    transform: scale(0.39);
+    top: -70px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face10.type7 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face10.type12 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face10.type15 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 21px;
+}
+#hairstyle .portraitbox.face10.type16 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face10.type17 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 22px;
+}
+#hairstyle .portraitbox.face10.type18 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 18px;
+}
+/*#hairstyle .portraitbox.face10.type22 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 25px;
+}*/
+#hairstyle .portraitbox.face10.type23 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face10.type24 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 26px;
+}
+
+/****脸型11****/
+#hairstyle .portraitbox.face11.type3 {
+    -webkit-transform: scale(0.39);
+    transform: scale(0.39);
+    top: -70px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face11.type4 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face11.type5 {
+    -webkit-transform: scale(0.39);
+    transform: scale(0.39);
+    top: -70px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face11.type6 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face11.type12 {
+    -webkit-transform: scale(0.38);
+    transform: scale(0.38);
+    top: -70px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face11.type15 {
+    -webkit-transform: scale(0.38);
+    transform: scale(0.38);
+    top: -70px;
+    left: 21px;
+}
+#hairstyle .portraitbox.face11.type16 {
+    -webkit-transform: scale(0.38);
+    transform: scale(0.38);
+    top: -70px;
+    left: 20px;
+}
+#hairstyle .portraitbox.face11.type18 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 33px;
+}
+#hairstyle .portraitbox.face11.type23 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -70px;
+    left: 22px;
+}
+#hairstyle .portraitbox.face11.type24 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -75px;
+    left: 28px;
+}
+
+/****脸型12****/
+#hairstyle .portraitbox.face12.type4 {
+    -webkit-transform: scale(0.38);
+    transform: scale(0.38);
+    top: -75px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face12.type13 {
+    -webkit-transform: scale(0.38);
+    transform: scale(0.38);
+    top: -77px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face12.type15 {
+    -webkit-transform: scale(0.38);
+    transform: scale(0.38);
+    top: -75px;
+    left: 24px;
+}
+#hairstyle .portraitbox.face12.type18 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -81px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face12.type21 {
+    -webkit-transform: scale(0.38);
+    transform: scale(0.38);
+    top: -86px;
     left: 23px;
 }
-#hairstyle .portraitbox.type17 {
+#hairstyle .portraitbox.face12.type22 {
+    -webkit-transform: scale(0.38);
+    transform: scale(0.38);
+    top: -78px;
+    left: 22px;
+}
+#hairstyle .portraitbox.face12.type24 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -78px;
+    left: 29px;
+}
+
+/****脸型13****/
+#hairstyle .portraitbox.face13.type5 {
+    -webkit-transform: scale(0.38);
+    transform: scale(0.38);
+    top: -77px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face13.type8 {
+    -webkit-transform: scale(0.38);
+    transform: scale(0.38);
+    top: -77px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face13.type9 {
+    -webkit-transform: scale(0.38);
+    transform: scale(0.38);
+    top: -81px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face13.type15 {
+    -webkit-transform: scale(0.38);
+    transform: scale(0.38);
+    top: -79px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face13.type16 {
+    -webkit-transform: scale(0.38);
+    transform: scale(0.38);
+    top: -79px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face13.type17 {
+    -webkit-transform: scale(0.38);
+    transform: scale(0.38);
+    top: -79px;
+    left: 27px;
+}
+#hairstyle .portraitbox.face13.type18 {
+    -webkit-transform: scale(0.38);
+    transform: scale(0.38);
+    top: -82px;
+    left: 27px;
+}
+
+/****脸型14****/
+#hairstyle .portraitbox.face14.type6 {
+    -webkit-transform: scale(0.39);
+    transform: scale(0.39);
+    top: -83px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face14.type8 {
+    -webkit-transform: scale(0.39);
+    transform: scale(0.39);
+    top: -78px;
     left: 25px;
 }
-#hairstyle .portraitbox.type20 {
+#hairstyle .portraitbox.face14.type9 {
+    -webkit-transform: scale(0.39);
+    transform: scale(0.39);
+    top: -83px;
+    left: 26px;
+}
+#hairstyle .portraitbox.face14.type18 {
+    -webkit-transform: scale(0.39);
+    transform: scale(0.39);
+    top: -85px;
+    left: 21px;
+}
+#hairstyle .portraitbox.face14.type21 {
+    -webkit-transform: scale(0.39);
+    transform: scale(0.39);
+    top: -83px;
+    left: 26px;
+}
+
+/****脸型15****/
+#hairstyle .portraitbox.face15.type5 {
+    -webkit-transform: scale(0.39);
+    transform: scale(0.39);
+    top: -82px;
+    left: 30px;
+}
+#hairstyle .portraitbox.face15.type6 {
+    -webkit-transform: scale(0.39);
+    transform: scale(0.39);
+    top: -85px;
+    left: 27px;
+}
+#hairstyle .portraitbox.face15.type8 {
+    -webkit-transform: scale(0.39);
+    transform: scale(0.39);
+    top: -77px;
+    left: 30px;
+}
+#hairstyle .portraitbox.face15.type18 {
+    -webkit-transform: scale(0.39);
+    transform: scale(0.39);
+    top: -77px;
+    left: 36px;
+}
+#hairstyle .portraitbox.face15.type23 {
+    -webkit-transform: scale(0.39);
+    transform: scale(0.39);
+    top: -77px;
+    left: 38px;
+}
+
+/****脸型16****/
+#hairstyle .portraitbox.face16.type4 {
+    -webkit-transform: scale(0.36);
+    transform: scale(0.36);
+    top: -70px;
     left: 25px;
 }
-#hairstyle .portraitbox.type22 {
+#hairstyle .portraitbox.face16.type5 {
+    -webkit-transform: scale(0.36);
+    transform: scale(0.36);
+    top: -70px;
+    left: 25px;
+}
+#hairstyle .portraitbox.face16.type6 {
+    -webkit-transform: scale(0.36);
+    transform: scale(0.36);
+    top: -70px;
+    left: 25px;
+}
+#hairstyle .portraitbox.face16.type8 {
+    -webkit-transform: scale(0.36);
+    transform: scale(0.36);
+    top: -65px;
+    left: 25px;
+}
+#hairstyle .portraitbox.face16.type9 {
+    -webkit-transform: scale(0.36);
+    transform: scale(0.36);
+    top: -75px;
+    left: 25px;
+}
+#hairstyle .portraitbox.face16.type11 {
     -webkit-transform: scale(0.32);
     transform: scale(0.32);
-    left: 47px;
-    top: -80px;
+    top: -75px;
+    left: 45px;
 }
-#hairstyle .portraitbox.type23 {
-    left: 32px;
+#hairstyle .portraitbox.face16.type16 {
+    -webkit-transform: scale(0.36);
+    transform: scale(0.36);
+    top: -70px;
+    left: 28px;
 }
-#hairstyle .portraitbox.type24 {
+#hairstyle .portraitbox.face16.type18 {
+    -webkit-transform: scale(0.36);
+    transform: scale(0.36);
+    top: -68px;
+    left: 30px;
+}
+#hairstyle .portraitbox.face16.type22 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    top: -68px;
+    left: 30px;
+}
+
+
+
+
+/*--------------------------------------------------------------------*/
+
+
+/*针对脸型稍微调整，后期调整300多种样式之后可以去掉*/
+#hairstyle .portraitbox.type11 {
+    -webkit-transform: scale(0.32);
+    transform: scale(0.32);
+    top: -73px;
+    left: 50px;
+}
+#hairstyle .portraitbox.type17 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+}
+
+
+
+
+
+#hairstyle .portraitbox.face4.type23, #hairstyle .portraitbox.face5.type23, #hairstyle .portraitbox.face6.type23, #hairstyle .portraitbox.face7.type23, #hairstyle .portraitbox.face8.type23, #hairstyle .portraitbox.face11.type23, #hairstyle .portraitbox.face12.type23, #hairstyle .portraitbox.face13.type23, #hairstyle .portraitbox.face14.type23, #hairstyle .portraitbox.face16.type23 {
+    left: 38px;
+}
+
+#hairstyle .portraitbox.face7.type15 {
+    left: 23px;
+}
+#hairstyle .portraitbox.face9.type11 {
+    -webkit-transform: scale(0.33);
+    transform: scale(0.33);
+    top: -75px;
+}
+#hairstyle .portraitbox.face9.type14 {
+    -webkit-transform: scale(0.365);
+    transform: scale(0.365);
+    top: -78px;
     left: 25px;
 }
+#hairstyle .portraitbox.face9.type16 {
+    -webkit-transform: scale(0.335);
+    transform: scale(0.335);
+    left: 24px;
+}
+#hairstyle .portraitbox.face10.type14 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -78px;
+    left: 30px;
+}
+#hairstyle .portraitbox.face10.type17 {
+    left: 25px;
+}
+#hairstyle .portraitbox.face10.type22 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -78px;
+    left: 25px;
+}
+#hairstyle .portraitbox.face11.type14, #hairstyle .portraitbox.face11.type16 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+    top: -78px;
+    left: 30px;
+}
+#hairstyle .portraitbox.face11.type22 {
+    top: -78px;
+}
+#hairstyle .portraitbox.face11.type23 {
+    -webkit-transform: scale(0.37);
+    transform: scale(0.37);
+}
+#hairstyle .portraitbox.face12.type11 {
+    top: -80px;
+}
+#hairstyle .portraitbox.face12.type14 {
+    -webkit-transform: scale(0.36);
+    transform: scale(0.36);
+    top: -75px;
+}
+#hairstyle .portraitbox.face12.type17 {
+    -webkit-transform: scale(0.3);
+    transform: scale(0.3);
+    top: -78px;
+}
+#hairstyle .portraitbox.face13.type17 {
+    -webkit-transform: scale(0.32);
+    transform: scale(0.32);
+    top: -72px;
+}
+#hairstyle .portraitbox.face14.type11 {
+    -webkit-transform: scale(0.32);
+    transform: scale(0.32);
+    top: -79px;
+    left: 52px;
+}
+#hairstyle .portraitbox.face14.type15 {
+    left: 25px;
+}
+
+
+
+/*#hairstyle .portraitbox.type4, #hairstyle .portraitbox.type7, #hairstyle .portraitbox.type11, #hairstyle .portraitbox.type22 {
+    -webkit-transform: scale(0.33);
+    transform: scale(0.33);
+    left: 52px;
+}*/
+
+
+
+/*#hairstyle .portraitbox.type3 {
+    -webkit-transform: scale(0.35);
+    transform: scale(0.35);
+    *//*left: 27px;*//*
+}
+#hairstyle .portraitbox.type4, #hairstyle .portraitbox.type7 {
+    -webkit-transform: scale(0.3);
+    transform: scale(0.3);
+    *//*left: 55px;*//*
+}
+#hairstyle .portraitbox.type4 {
+    *//*left: 50px;*//*
+}
+#hairstyle .portraitbox.type11 {
+    -webkit-transform: scale(0.32);
+    transform: scale(0.32);
+    *//*top: -80px;
+    left: 48px;*//*
+}
+#hairstyle .portraitbox.type12 {
+    -webkit-transform: scale(0.32);
+    transform: scale(0.32);
+    *//*top: -60px;
+    left: 28px;*//*
+}
+#hairstyle .portraitbox.type13 {
+    -webkit-transform: scale(0.32);
+    transform: scale(0.32);
+    *//*top: -62px;
+    left: 28px;*//*
+}
+#hairstyle .portraitbox.type14 {
+    left: 25px;
+}
+#hairstyle .portraitbox.type16 {
+    -webkit-transform: scale(0.33);
+    transform: scale(0.33);
+    *//*top: -63px;
+    left: 27px;*//*
+}
+#hairstyle .portraitbox.type17 {
+    *//*left: 27px;*//*
+}
+#hairstyle .portraitbox.type20 {
+    *//*left: 25px;*//*
+}
+#hairstyle .portraitbox.type22 {
+    -webkit-transform: scale(0.34);
+    transform: scale(0.34);
+    *//*left: 50px;
+    top: -88px;*//*
+}
+#hairstyle .portraitbox.type23 {
+    *//*left: 32px;*//*
+}
+#hairstyle .portraitbox.type24 {
+    *//*left: 25px;*//*
+}*/
 
 /*#hairstyle .text {
     width: 100%;
@@ -714,13 +1759,27 @@ ol.btns li:nth-last-of-type(1) {
 }
 #hairstyle .sign_name {
     position: absolute;
-    top: 790px;
+    bottom: 250px;
     right: 20px;
     -webkit-transform: rotate(13deg);
+    transform: rotate(13deg);
     font-size: 48px;
     display: none;
 }
 #hairstyle .sign_name.active {
+    display: block;
+}
+#hairstyle .meitu_share_icon {
+    width: 130px;
+    height: 157px;
+    position: absolute;
+    bottom: 230px;
+    right: 0;
+    z-index: 6;
+    background: url("../img/meitu/pic_07.png") center no-repeat;
+    display: none;
+}
+#hairstyle .meitu_share_icon.active {
     display: block;
 }
 
@@ -772,6 +1831,157 @@ ol.btns li:nth-last-of-type(1) {
     transform: scale(0.8);
     top: -180px;
 }
+
+/*重载*/
+#reload {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 500;
+    background: rgba(0,0,0,0.75);
+    display: none;
+}
+#reload.active {
+    display: block;
+}
+
+/*美图分享层*/
+#meitu_share_layer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 500;
+    background: rgba(0,0,0,0.9);
+    display: none;
+}
+#meitu_share_layer.active {
+    display: block;
+}
+#meitu_share_layer img {
+    position: absolute;
+}
+#meitu_share_layer img.tit {
+    top: 210px;
+    left: 118px;
+}
+#meitu_share_layer a {
+    display: block;
+    position: absolute;
+    top: 595px;
+}
+#meitu_share_layer a.close {
+    width: 160px;
+    height: 160px;
+    top: 50px;
+    right: 50px;
+    background: url("../img/meitu/pic_06.png") center no-repeat;
+}
+#shareWeixinCircle {
+    width: 209px;
+    height: 289px;
+    left: 115px;
+    background: url("../img/meitu/pic_04.png?__spriter") 0 0 no-repeat;
+}
+#shareWeixin {
+    width: 225px;
+    height: 287px;
+    right: 115px;
+    background: url("../img/meitu/pic_05.png?__spriter") 0 0 no-repeat;
+}
+
+
+/* ********** dialog start ********** */
+#dialog{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom:0;
+    left: 0;
+    z-index: 501;
+    display: none;
+}
+#diaBlack{
+    display: block;
+    width:100%;
+    height:100%;
+
+    position: absolute;
+    background: #212121;
+    filter:alpha(opacity=80);
+    -moz-opacity:0.8;
+    opacity: 0.8;
+}
+#diaBg{
+    display: block;
+    width:420px;
+    height:250px;
+    border-radius: 30px;
+
+    position:absolute;
+    bottom: 500px;
+    left: 170px;
+
+    background: #fff;
+    filter:alpha(opacity=80);
+    -moz-opacity:0.8;
+    opacity: 0.8;
+}
+#diaLine{
+    background: #CCC;
+    width:420px;
+    height: 2px;
+
+    position:absolute;
+    bottom: 580px;
+    left: 170px;
+}
+#diaBtn{
+    background: #AAA;
+    width:420px;
+    height: 90px;
+
+    position:absolute;
+    bottom: 500px;
+    left: 170px;
+
+    filter:alpha(opacity=0);
+    -moz-opacity:0;
+    opacity: 0;
+}
+
+#dialog span{
+    text-align: center;
+    line-height: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    width:420px;
+    left:173px;
+    font-size: 24px;
+    /*font-weight: bold;
+    font-style: italic;*/
+}
+#diaTitle{
+    position:absolute;
+    bottom: 640px;
+    color: #111;
+}
+#diaText{
+    position:absolute;
+    bottom: 650px;
+    color: #111;
+}
+#diaTxt{
+    position:absolute;
+    bottom: 530px;
+    color:#3879D9;
+}
+/* ********** dialog end ********** */
+
+
 
 /************************************************************************************
 smaller than 480 PHONE
